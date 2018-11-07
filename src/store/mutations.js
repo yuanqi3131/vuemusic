@@ -1,6 +1,8 @@
 import {
   RECEIVE_BANNERS,
-  RECEIVE_RECOMMEND_LIST
+  RECEIVE_RECOMMEND_LIST,
+  RECEIVE_ANCHOR_RADIOS,
+  RECEIVE_ALL_RANK_LIST
 } from './mtations-type'
 
 export default {
@@ -9,5 +11,11 @@ export default {
   },
   [RECEIVE_RECOMMEND_LIST] (state, {recommendList}) {
     state.recommendList = recommendList
+  },
+  [RECEIVE_ANCHOR_RADIOS] (state, {anchorRadios}) {
+    state.anchorRadios = anchorRadios
+  },
+  [RECEIVE_ALL_RANK_LIST] (state, {allRankList}) {
+    state.allRankList = allRankList
   }
 }

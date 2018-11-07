@@ -64,6 +64,6 @@ export default {
     width: 2rem
     border-bottom: 3px solid
     margin-top: -0.1rem
-    line-height: 1.2rem
+    line-height: 1.3rem
     color: #fff
 </style>

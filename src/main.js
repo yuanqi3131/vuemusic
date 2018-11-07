@@ -9,6 +9,7 @@ import store from './store'
 import './assets/reset.css'
 import 'mint-ui/lib/style.css'
 import 'swiper/dist/css/swiper.css'
+import './assets/styles/iconfont.css'
 Vue.config.productionTip = false
 
 Vue.use(MintUI)

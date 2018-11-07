@@ -1,4 +1,10 @@
 export default {
   banners: [],
-  recommendList: []
+  recommendList: [],
+  anchorRadios: [],
+  allRankList: {
+    list: [],
+    artistToplist: [],
+    rewardToplist: []
+  }
 }

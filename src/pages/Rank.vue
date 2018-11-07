@@ -1,0 +1,36 @@
+<template>
+  <div class="rank" ref="rank">
+    <div>
+      <Top left="icon-fanhui" content="排行榜"></Top>
+      <Official :rank="allRankList"></Official>
+    </div>
+  </div>
+</template>
+
+<script>
+import Top from '../components/Top'
+import Official from '../components/Rank/Official'
+import {mapState} from 'vuex'
+export default {
+  name: 'Rank',
+  mounted () {
+    this.$store.dispatch('getAllRankList')
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    ...mapState(['allRankList'])
+  },
+  components: {
+    Top,
+    Official
+  }
+}
+</script>
+
+<style lang="stylus" scoped>
+.rank
+  overflow: hidden
+</style>

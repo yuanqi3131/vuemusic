@@ -5,7 +5,7 @@
     <IconNav></IconNav>
     <Template title="推荐歌单" :list="recommendList"></Template>
     <Template title="最新音乐" :list="recommendList"></Template>
-    <Template title="主播电台" :list="recommendList"></Template>
+    <Template title="主播电台" :list="anchorRadios"></Template>
     <Footer></Footer>
   </div>
 </div>
@@ -22,6 +22,7 @@ export default {
   name: 'Recommend',
   mounted () {
     this.$store.dispatch('getRecommendList')
+    this.$store.dispatch('getAnchorRadios')
   },
   activated () {
     let scroll = new BScroll('.recommend', {
@@ -30,7 +31,7 @@ export default {
     })
   },
   computed: {
-    ...mapState(['recommendList'])
+    ...mapState(['recommendList', 'anchorRadios'])
   },
   components: {
     Banner,

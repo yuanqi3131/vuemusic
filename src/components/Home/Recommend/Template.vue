@@ -2,7 +2,11 @@
     <div class="template">
       <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
       <div class="template-items">
-        <div class="template-item" v-for="(item,index) in list.slice(0,6)" :key="list.id">
+        <div class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id">
+          <div class="template-item-listen" v-if="showPlayCount">
+            <i class="iconfont" style="color: #fff">&#xe601;</i>
+            <span>{{item.playCount}}</span>
+          </div>
           <div class="template-item-img"><img class="template-item-imgcontent" :src="item.picUrl"/></div>
           <p class="template-item-desc">{{item.name}}</p>
         </div>
@@ -16,6 +20,30 @@ export default {
   props: {
     title: String,
     list: Array
+  },
+  data () {
+    return {
+      showPlayCount: false,
+      listItem: []
+    }
+  },
+  watch: {
+    list: function () {
+      let that = this
+      this.$nextTick(() => {
+        if (that.list[0].playCount !== undefined) {
+          that.showPlayCount = true
+        }
+        that.listItem = that.list
+        if (that.listItem[0].playCount !== undefined) {
+          for (let i = 0; i < that.listItem.length; i++) {
+            if (that.listItem[i].playCount > 99999) {
+              that.listItem[i].playCount = (that.listItem[i].playCount / 10000).toFixed(1) + '万'
+            }
+          }
+        }
+      })
+    }
   }
 }
 </script>
@@ -41,6 +69,12 @@ export default {
       padding-bottom: 40%
       position: relative
       margin: 0.9rem 0
+      .template-item-listen
+        position: absolute
+        right: 0.5rem
+        z-index: 2
+        font-size: 0.8rem
+        color: #fff
       .template-item-img
         position: absolute
         top: 0
