@@ -60,7 +60,7 @@ export default {
       globalRank: [] // 全球榜
     }
   },
-  mounted () {
+  updated () {
     this.scroll = new BScroll(this.$refs.official)
   },
   watch: {

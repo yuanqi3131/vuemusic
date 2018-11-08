@@ -2,7 +2,9 @@ import {
   RECEIVE_BANNERS,
   RECEIVE_RECOMMEND_LIST,
   RECEIVE_ANCHOR_RADIOS,
-  RECEIVE_ALL_RANK_LIST
+  RECEIVE_ALL_RANK_LIST,
+  RECEIVE_SUPREME_MUSIC,
+  RECEIVE_MUSIC_LIST
 } from './mtations-type'
 
 export default {
@@ -17,5 +19,11 @@ export default {
   },
   [RECEIVE_ALL_RANK_LIST] (state, {allRankList}) {
     state.allRankList = allRankList
+  },
+  [RECEIVE_SUPREME_MUSIC] (state, {supermeMusic}) {
+    state.supermeMusic = supermeMusic
+  },
+  [RECEIVE_MUSIC_LIST] (state, {musicList}) {
+    state.MusicList = musicList
   }
 }

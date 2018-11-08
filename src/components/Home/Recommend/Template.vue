@@ -1,6 +1,8 @@
 <template>
     <div class="template">
-      <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
+      <router-link :to="router" tag="div">
+        <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
+      </router-link>
       <div class="template-items">
         <div class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id">
           <div class="template-item-listen" v-if="showPlayCount">
@@ -19,7 +21,8 @@ export default {
   name: 'Template',
   props: {
     title: String,
-    list: Array
+    list: Array,
+    router: String
   },
   data () {
     return {
@@ -38,7 +41,7 @@ export default {
         if (that.listItem[0].playCount !== undefined) {
           for (let i = 0; i < that.listItem.length; i++) {
             if (that.listItem[i].playCount > 99999) {
-              that.listItem[i].playCount = (that.listItem[i].playCount / 10000).toFixed(1) + '万'
+              that.listItem[i].playCount = parseInt(that.listItem[i].playCount / 10000) + '万'
             }
           }
         }

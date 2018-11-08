@@ -1,10 +1,10 @@
 <template>
   <div class="top">
-    <div class="top-left" @click="goback()"><i class="iconfont" :class="left"></i></div>
+    <div class="top-left"  @click="goback()"><slot name="left"></slot></div>
     <div id="top-content" class="top-content" @click="textMove()">
-      <span id="top-content-desc">{{content}}</span>
+      <slot name="content"></slot>
     </div>
-    <div class="top-right"><i class="iconfont" :class="right"></i></div>
+    <div class="top-right"><slot name="right"></slot></div>
   </div>
 </template>
 

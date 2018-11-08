@@ -2,7 +2,9 @@
   <div class="iconNav">
     <div class="iconItem"><img class="icon" src="static/image/cm2_discover_icn_fm-ip6@2x.png"/>私人FM</div>
     <div class="iconItem"><img class="icon" src="static/image/cm4_disc_topbtn_daily-ip6@2x.png"/>每日推荐</div>
-    <div class="iconItem"><img class="icon" src="static/image/cm2_discover_icn_fm-ip6@2x.png"/>歌单</div>
+    <router-link to="/musicmenu" tag="span">
+      <div class="iconItem"><img class="icon" src="static/image/cm2_discover_icn_fm-ip6@2x.png"/>歌单</div>
+    </router-link>
     <router-link to="/rank" tag="span">
       <div class="iconItem"><img class="icon" src="static/image/cm2_discover_icn_upbill-ip6@2x.png"/>排行榜</div>
     </router-link>

@@ -3,9 +3,9 @@
   <div>
     <Banner></Banner>
     <IconNav></IconNav>
-    <Template title="推荐歌单" :list="recommendList"></Template>
-    <Template title="最新音乐" :list="recommendList"></Template>
-    <Template title="主播电台" :list="anchorRadios"></Template>
+    <Template title="推荐歌单" :list="recommendList" router="/musicmenu"></Template>
+    <Template title="最新音乐" :list="recommendList" router="/musicmenu"></Template>
+    <Template title="主播电台" :list="anchorRadios" router="/musicmenu"></Template>
     <Footer></Footer>
   </div>
 </div>

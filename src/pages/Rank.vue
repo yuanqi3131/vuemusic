@@ -1,7 +1,10 @@
 <template>
   <div class="rank" ref="rank">
     <div>
-      <Top left="icon-fanhui" content="排行榜"></Top>
+      <Top>
+        <div slot="left"><i class="iconfont icon-fanhui"></i></div>
+        <span slot="content" id="top-content-desc">排行榜</span>
+      </Top>
       <Official :rank="allRankList"></Official>
     </div>
   </div>
