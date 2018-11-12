@@ -1,9 +1,9 @@
 <template>
   <div class="musicList" ref="musicList">
     <div>
-      <div class="header" >
+      <router-link to="/supermemusic" tag="div" class="header" >
         <img class="header-img" :src="supermeMusic[0].coverImgUrl"/>
-        <router-link to="/supermemusic">
+        <div>
           <div class="header-item">
           <div class="header-item-title">
             <i class="iconfont icon-jingpintuijian" style="font-size: 1.5rem"></i>
@@ -13,8 +13,8 @@
           <p class="header-item-content">{{supermeMusic[0].name}}</p>
           <span class="header-item-desc">{{supermeMusic[0].copywriter}}</span>
         </div>
-        </router-link>
-      </div>
+        </div>
+      </router-link>
       <MusicList ref="list"></MusicList>
     </div>
   </div>

@@ -2,11 +2,14 @@
   <div class="list" ref="list">
     <div>
       <div class="list-header">
-        <div class="list-header-playCount">
-          <i class="iconfont">&#xe601;</i>
-          <span class="list-header-playCount-desc">{{listInfo.playCount}}</span>
+        <div class="list-header-left">
+          <img class="list-header-left-img" :src="listInfo.coverImgUrl"/>
+          <div class="list-header-left-playCount">
+            <i class="iconfont">&#xe601;</i>
+            <span class="list-header-playCount-desc">{{listInfo.playCount}}</span>
+          </div>
+          <i class="iconfont icon-details list-header-left-detail"></i>
         </div>
-        <img class="list-header-img" :src="listInfo.coverImgUrl"/>
         <div class="list-header-info">
           <div class="list-header-title">{{listInfo.name}}</div>
           <div class="list-header-user">
@@ -82,18 +85,27 @@ export default {
   position: relative
   display: flex
   background: #939f9f
-  .list-header-playCount
-    position: absolute
-    top: 10%
-    left: 25%
-    font-size: .7rem
-    color: #fff
-    z-index: 2
-  .list-header-img
+  .list-header-left
+    position: relative
     width: 35%
-    position: absolute
-    top: 10%
-    left: 5%
+    .list-header-left-playCount
+      position: absolute
+      right: -1rem
+      top: 2rem
+      font-size: .7rem
+      color: #fff
+      z-index: 2
+    .list-header-left-img
+      width: 100%
+      position: relative
+      margin-left: 1.4rem
+      margin-top: 2rem
+    .list-header-left-detail
+      position: absolute
+      right: -1.2rem
+      margin-top: -1.6rem
+      color: #fff
+      font-size: 1.4rem
   .list-header-info
     position: absolute
     top: 8%
@@ -129,6 +141,7 @@ export default {
     position: absolute
     display: flex
     top: 76%
+    left: 0
     width: 100%
     .list-header-icon-item
       display: flex

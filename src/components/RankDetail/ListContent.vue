@@ -44,6 +44,7 @@ export default {
         if (that[i].ar.length === 1) {
           songer = that[i].ar[0].name + ' - ' + that[i].al.name
           that[i].songer = songer
+          songer = ''
         } else {
           for (let j = 0; j < that[i].ar.length; j++) {
             songer += that[i].ar[j].name + '/'
@@ -51,6 +52,7 @@ export default {
           songer = songer.substring(0, songer.lastIndexOf('/'))// 去掉最后一个斜杠
           songer = songer + '-' + that[i].al.name
           that[i].songer = songer
+          songer = ''
         }
       }
       return that
@@ -100,14 +102,14 @@ export default {
       justify-content: center
       color: #bababa
     .content-music-item-texts
-      height: 3rem
+      height: 3.2rem
       border-bottom: 1px solid rgba(190, 188, 188, 0.15)
       flex: 8
       display: flex
       .content-music-item-text
         display: flex
         flex-direction: column
-        flex: 3
+        flex: 3.1
         line-height: 1.2rem
         justify-content: center
         .content-music-item-text-name
@@ -115,6 +117,7 @@ export default {
         .content-music-item-text-songer
           font-size: .7rem
           color: #bababa
+          line-height: .7rem
       .content-music-item-icon
         flex: 1
         display: flex

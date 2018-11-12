@@ -2,10 +2,12 @@
   <div class="superList-items" ref="superList">
     <div>
       <div class="superList-item" v-for="(item, index) in supermeMusic" :key="item.id">
-        <img class="superList-item-img" :src="item.coverImgUrl"/>
-        <div class="superList-item-playCount">
-          <i class="iconfont">&#xe601;</i>
-          <span>{{item.playCount}}</span>
+        <div class="superList-item-img">
+          <img class="superList-item-imgcontent" :src="item.coverImgUrl"/>
+          <div class="superList-item-playCount">
+            <i class="iconfont">&#xe601;</i>
+            <span>{{item.playCount}}</span>
+          </div>
         </div>
         <div class="superList-item-text">
           <div class="superList-item-text-title">{{item.name}}</div>
@@ -60,34 +62,39 @@ export default {
 .superList-item
   display: flex
   position: relative
+  height: 0
+  padding-bottom: 36%
   .superList-item-img
+    position: relative
     width: 35%
-    height: 19.1%
-    margin-top: .3rem
-    margin-left: .3rem
-  .superList-item-playCount
-    position: absolute
-    left: 21%
-    top: .5rem
-    color: #fff
-    font-size: .6rem
+    .superList-item-imgcontent
+      margin-top: .3rem
+      margin-left: .3rem
+      width: 100%
+    .superList-item-playCount
+      position: absolute
+      right: 0
+      top: .5rem
+      color: #fff
+      font-size: .6rem
   .superList-item-text
     display: flex
     flex-direction: column
-    margin-left: .5rem
+    position: absolute
+    left: 40%
+    top: 12%
     .superList-item-text-title
-      flex: 2
       display: flex
       align-items: center
       font-size: .9rem
       line-height: 1.2rem
     .superList-item-text-writer
-      flex: 1
       font-size: .7rem
       color: #b0aeae
+      margin-top: 8%
     .superList-item-text-desc
-      flex: 1
       font-size: .6rem
+      margin-top: 8%
       .superList-item-text-desc-tag
         color: #ff5270
         display: inline-block

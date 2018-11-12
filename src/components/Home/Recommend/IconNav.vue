@@ -27,8 +27,6 @@ export default {
   text-align: center
   border-bottom: 1px solid #E5E2E2
   padding-bottom: 1rem
-  padding-bottom: 32%
-  height: 0
   .iconItem
     display: flex
     flex-direction: column
