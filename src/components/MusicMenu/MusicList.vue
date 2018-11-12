@@ -74,7 +74,8 @@ export default {
      display: flex
      flex-direction: column
      width: 50%
-     height: 60%
+     height: 0
+     padding-bottom: 60%
      display: flex
      position: relative
     .musicList-item-playCount
@@ -84,10 +85,11 @@ export default {
       font-size: .8rem
     .musicList-item-img
       width: 96%
-      height: 90%
+      height: 80%
+      position: absolute
     .musicList-item-desc
-      line-height: 1.4rem
-      margin-top: .5rem
-      margin-bottom: 1rem
+      line-height: 1.2rem
       font-size: .8rem
+      position: absolute
+      top: 81%
 </style>

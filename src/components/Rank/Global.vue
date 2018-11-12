@@ -1,7 +1,7 @@
 <template>
   <div class="global">
       <div class="global-title">全球榜</div>
-        <div class="global-items">
+      <div class="global-items">
           <div class="global-item"  v-for="(item, index) in globalRank" :key="item.id">
             <img class="global-item-img" :src="item.coverImgUrl"/>
             <span class="global-item-desc">{{item.name}}</span>
@@ -33,12 +33,17 @@ export default {
     width: 33.3%
     display: flex
     flex-direction: column
-    padding-bottom: 2.5rem
-.global-item-img
-  width: 94%
-  height: 90%
-  margin-bottom: .5rem
-.global-item-desc
-  line-height: 1.2rem
-  font-size: .8rem
+    height: 0
+    padding-bottom: 43%
+    position: relative
+    .global-item-img
+      width: 94%
+      height: 70%
+      margin-bottom: .5rem
+      position: absolute
+    .global-item-desc
+      line-height: 1.2rem
+      font-size: .8rem
+      position: absolute
+      top: 75%
 </style>

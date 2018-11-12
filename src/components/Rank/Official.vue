@@ -2,6 +2,17 @@
     <div class="official" ref="official">
       <div class="official-content">
         <div class="official-title">官方榜</div>
+        <div class="official-items" style="padding-bottom: 123%">
+          <router-link to="/rankdetail" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">
+            <img class="official-item-img" :src="item.coverImgUrl"/>
+            <div class="official-item-update">{{item.updateFrequency}}</div>
+            <div class="official-item-Ranks">
+              <div class="official-item-Rank" v-for="(list,index) in item.tracks" :key="index">
+                <p class="official-item-Rank-desc">{{index+1}}.{{list.first}} - {{list.second}}</p>
+              </div>
+            </div>
+          </router-link>
+        </div>
         <!--歌手榜-->
         <div class="official-items">
           <div class="official-item">
@@ -30,17 +41,6 @@
             </div>
           </div>
         </div>
-        <div class="official-items">
-          <div class="official-item" v-for="(item, index) in officialRank" :key="item.id">
-            <img class="official-item-img" :src="item.coverImgUrl"/>
-            <div class="official-item-update">{{item.updateFrequency}}</div>
-            <div class="official-item-Ranks">
-              <div class="official-item-Rank" v-for="(list,index) in item.tracks" :key="index">
-                <p class="official-item-Rank-desc">{{index+1}}.{{list.first}} - {{list.second}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
         <Global :globalRank="globalRank"></Global>
       </div>
     </div>
@@ -61,7 +61,9 @@ export default {
     }
   },
   updated () {
-    this.scroll = new BScroll(this.$refs.official)
+    this.scroll = new BScroll(this.$refs.official, {
+      click: true
+    })
   },
   watch: {
     rank () {
@@ -94,16 +96,20 @@ export default {
     margin-left: .5rem
     font-weight: bold
   .official-items
-    margin-top: .6rem
     margin-left: .5rem
+    height: 0
+    padding-bottom: 29%
     .official-item
       position: relative
       margin-top: .4rem
       font-size: .9rem
+      height: 0
+      padding-bottom: 30%
       .official-item-img
         width: 34%
-        height: 19.1%
+        height: 100%
         border-radius: .4rem
+        position: absolute
       .official-item-update
         color: #fff
         position: absolute

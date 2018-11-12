@@ -4,6 +4,7 @@
     <div id="top-content" class="top-content" @click="textMove()">
       <slot name="content"></slot>
     </div>
+    <div class="top-search"><slot name="search"></slot></div>
     <div class="top-right"><slot name="right"></slot></div>
   </div>
 </template>
@@ -59,6 +60,11 @@ export default {
     font-size: 1.15rem
     white-space: nowrap
     overflow: hidden
+  .top-search
+    flex: 1
+    align-self: center
+    text-align: center
+    color: $TopColor
   .top-right
     flex: 1
     align-self: center

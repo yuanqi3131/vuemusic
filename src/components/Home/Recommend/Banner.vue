@@ -50,15 +50,18 @@ export default {
   @import "~styles/variable.styl"
  .swiper-pagination >>> .swiper-pagination-bullet-active
   background: $ThemeColor
-.bannerBack
-  background: $ThemeColor
-  height: 6rem
-  position: relative
-  top: 6.4rem
-.swiper-container
-  margin-top: 0rem
-  .bannerImg
-    width: 96%
-    display: block
-    margin: 0 auto
+ .banner
+   height: 0
+   padding-bottom: 65%
+  .bannerBack
+    background: $ThemeColor
+    height: 6rem
+    position: relative
+    top: 6.4rem
+  .swiper-container
+    margin-top: 0rem
+    .bannerImg
+      width: 96%
+      display: block
+      margin: 0 auto
 </style>

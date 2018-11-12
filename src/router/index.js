@@ -5,6 +5,7 @@ import Shop from '../pages/Shop'
 import Rank from '../pages/Rank'
 import MusicMenu from '../pages/MusicMenu'
 import SupermeMusic from '../pages/SupermeMusic'
+import RankDetail from '../pages/RankDetail'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       component: SupermeMusic,
       name: 'SupermeMusic',
       path: '/supermemusic'
+    },
+    {
+      component: RankDetail,
+      name: 'RankDetail',
+      path: '/rankdetail/:id'
     }
   ]
 })

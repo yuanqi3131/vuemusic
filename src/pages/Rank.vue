@@ -1,5 +1,5 @@
 <template>
-  <div class="rank" ref="rank">
+  <div class="rank">
     <div>
       <Top>
         <div slot="left"><i class="iconfont icon-fanhui"></i></div>

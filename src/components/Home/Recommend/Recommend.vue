@@ -1,5 +1,5 @@
 <template>
-<div class="recommend">
+<div class="recommend" ref="recommend">
   <div>
     <Banner></Banner>
     <IconNav></IconNav>
@@ -25,7 +25,7 @@ export default {
     this.$store.dispatch('getAnchorRadios')
   },
   activated () {
-    let scroll = new BScroll('.recommend', {
+    this.scroll = new BScroll(this.$refs.recommend, {
       scrollY: true,
       click: true
     })
@@ -42,6 +42,5 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="stylus" scoped>
 </style>

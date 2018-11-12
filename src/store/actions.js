@@ -4,7 +4,7 @@ import {
   RECEIVE_ANCHOR_RADIOS,
   RECEIVE_ALL_RANK_LIST,
   RECEIVE_SUPREME_MUSIC,
-  RECEIVE_MUSIC_LIST
+  RECEIVE_MUSIC_LIST, RECEIVE_MUSIC_LIST_INFO
 } from './mtations-type'
 import {
   resBanners,
@@ -12,7 +12,7 @@ import {
   resAnchorRadios,
   resAllRankList,
   resSupremeMusic,
-  resMusicList
+  resMusicList, resMusicListInfo
 } from '../api'
 
 export default {
@@ -56,6 +56,13 @@ export default {
     if (result.code === 200) {
       const musicList = result.playlists
       commit(RECEIVE_MUSIC_LIST, {musicList})
+    }
+  },
+  async getMusicListInfo ({commit}, id) {
+    const result = await resMusicListInfo(id)
+    if (result.code === 200) {
+      const musicListInfo = result.playlist
+      commit(RECEIVE_MUSIC_LIST_INFO, {musicListInfo})
     }
   }
 }

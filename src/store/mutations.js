@@ -4,7 +4,8 @@ import {
   RECEIVE_ANCHOR_RADIOS,
   RECEIVE_ALL_RANK_LIST,
   RECEIVE_SUPREME_MUSIC,
-  RECEIVE_MUSIC_LIST
+  RECEIVE_MUSIC_LIST,
+  RECEIVE_MUSIC_LIST_INFO
 } from './mtations-type'
 
 export default {
@@ -25,5 +26,8 @@ export default {
   },
   [RECEIVE_MUSIC_LIST] (state, {musicList}) {
     state.MusicList = musicList
+  },
+  [RECEIVE_MUSIC_LIST_INFO] (state, {musicListInfo}) {
+    state.musicListInfo = musicListInfo
   }
 }

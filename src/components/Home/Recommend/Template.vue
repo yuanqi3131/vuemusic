@@ -4,14 +4,14 @@
         <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
       </router-link>
       <div class="template-items">
-        <div class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id">
+        <router-link tag="div" :to="{name:'RankDetail', params: {id: item.id}}" class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id" >
           <div class="template-item-listen" v-if="showPlayCount">
             <i class="iconfont" style="color: #fff">&#xe601;</i>
             <span>{{item.playCount}}</span>
           </div>
           <div class="template-item-img"><img class="template-item-imgcontent" :src="item.picUrl"/></div>
           <p class="template-item-desc">{{item.name}}</p>
-        </div>
+        </router-link>
       </div>
     </div>
 </template>
