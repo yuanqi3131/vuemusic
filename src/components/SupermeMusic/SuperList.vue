@@ -52,12 +52,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .superList-items
-  position: absolute
-  top: 3rem
-  bottom: 0
-  left: 0
-  right: 0
+  positionAbsolute(3rem,0,0,0)
   overflow: hidden
 .superList-item
   display: flex
@@ -80,9 +77,7 @@ export default {
   .superList-item-text
     display: flex
     flex-direction: column
-    position: absolute
-    left: 40%
-    top: 12%
+    positionAbsolute(12%,null,null,40%)
     .superList-item-text-title
       display: flex
       align-items: center

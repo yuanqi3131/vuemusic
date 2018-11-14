@@ -1,95 +1,85 @@
 <template>
-<div class="musicList">
-  <div class="musicList-title">
-    <span class="musicList-title-choose">全部歌单</span>
-    <i class="iconfont icon-qianjin1"></i>
-    <div class="musicList-little-title">
-      <span class="musicList-little-title-desc">欧美</span>
-      <span  class="musicList-little-title-desc">说唱</span>
-      <span  class="musicList-little-title-desc">电子</span>
+  <div class="musicList" ref="musicList">
+    <div>
+      <router-link to="/supermemusic" tag="div" class="header" >
+        <img class="header-img" :src="supermeMusic[0].coverImgUrl"/>
+        <div>
+          <div class="header-item">
+          <div class="header-item-title">
+            <i class="iconfont icon-jingpintuijian" style="font-size: 1.5rem"></i>
+            <span>精品歌单</span>
+            <i class="iconfont icon-qianjin1"></i>
+          </div>
+          <p class="header-item-content">{{supermeMusic[0].name}}</p>
+          <span class="header-item-desc">{{supermeMusic[0].copywriter}}</span>
+        </div>
+        </div>
+      </router-link>
+      <MusicContent></MusicContent>
     </div>
   </div>
-  <div class="musicList-items">
-    <div class="musicList-item" v-for="(item, index) in MusicList" :key="item.id">
-      <div class="musicList-item-playCount">
-        <i class="iconfont" style="color: #fff">&#xe601;</i>
-        <span>{{item.playCount}}</span>
-      </div>
-      <img class="musicList-item-img" :src="item.coverImgUrl"/>
-      <span class="musicList-item-desc">{{item.name}}</span>
-    </div>
-  </div>
-</div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import BScroll from 'better-scroll'
+import MusicContent from './MusicContent'
 export default {
   name: 'MusicList',
-  mounted () {
-    this.$store.dispatch('getMusicList')
+  props: {
+    supermeMusic: Array
   },
-  computed: {
-    ...mapState(['MusicList'])
+  updated () {
+    this.$nextTick(() => {
+      if (!this.scroll) {
+        this.scroll = new BScroll(this.$refs.musicList, {
+          click: true
+        })
+      } else {
+        this.scroll.refresh()
+      }
+    })
   },
-  watch: {
-    MusicList () {
-      const that = this.MusicList
-      this.$nextTick(() => {
-        for (let i = 0; i < that.length; i++) {
-          if (that[i].playCount > 99999) {
-            that[i].playCount = parseInt(that[i].playCount / 10000) + '万'
-          }
-        }
-      })
-    }
+  components: {
+    MusicContent
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .musicList
-  position: relative
-  top: 1rem
-.musicList-title-choose
-  font-weight: bold
-  margin-left: .5rem
-.musicList-little-title
-  float: right
+  positionAbsolute(3rem,0,0,0)
+  overflow: hidden
+.header
   display: flex
-  font-size: .8rem
-  color: #b0aeae
-  & span:last-child
-    border-right: 0
-  .musicList-little-title-desc
-    display: block
-    width: 2.5rem
-    border-right: 1px solid #bababa
-    margin-right: .5rem
- .musicList-items
+  background: radial-gradient(#fff -154%, #2d355c 100%)
+  padding-bottom: 40%
+  height: 0
+  position: relative
+.header-img
+  width: 30%
+  positionAbsolute(1rem,0,0,1rem)
+.header-item
    display: flex
-   flex-wrap: wrap
-   margin-top: 1.5rem
-   .musicList-item
-     display: flex
-     flex-direction: column
-     width: 50%
-     height: 0
-     padding-bottom: 60%
-     display: flex
-     position: relative
-    .musicList-item-playCount
-      position: absolute
-      right: 1rem
-      color: #fff
-      font-size: .8rem
-    .musicList-item-img
-      width: 96%
-      height: 80%
-      position: absolute
-    .musicList-item-desc
-      line-height: 1.2rem
-      font-size: .8rem
-      position: absolute
-      top: 81%
+   flex-direction: column
+   margin-left: .5rem
+   width: 100%
+   position: absolute
+   top: 20%
+   left: 35%
+  .header-item-title
+    font-size: 1.2rem
+    color: #fff
+  .header-item-content
+    font-size: .9rem
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    width: 65%
+    color: #fff
+    positionAbsolute(150%)
+  .header-item-desc
+    font-size: .7rem
+    color: #bababa
+    positionAbsolute(250%)
 </style>

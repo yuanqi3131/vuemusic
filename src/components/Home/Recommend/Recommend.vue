@@ -16,7 +16,7 @@ import {mapState} from 'vuex'
 import Banner from './Banner'
 import IconNav from './IconNav'
 import Template from './Template'
-import Footer from './Footer'
+import Footer from '../Footer'
 import BScroll from 'better-scroll'
 export default {
   name: 'Recommend',

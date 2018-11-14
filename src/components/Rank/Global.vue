@@ -2,10 +2,10 @@
   <div class="global">
       <div class="global-title">全球榜</div>
       <div class="global-items">
-          <div class="global-item"  v-for="(item, index) in globalRank" :key="item.id">
+          <router-link tag="div" :to="{name: 'RecommendMusic' ,params: {id: item.id}}" class="global-item"  v-for="(item, index) in globalRank" :key="item.id">
             <img class="global-item-img" :src="item.coverImgUrl"/>
             <span class="global-item-desc">{{item.name}}</span>
-          </div>
+          </router-link>
       </div>
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .global-title
   padding-top: 2rem
   padding-bottom: 1rem
@@ -44,6 +45,5 @@ export default {
     .global-item-desc
       line-height: 1.2rem
       font-size: .8rem
-      position: absolute
-      top: 75%
+      positionAbsolute(75%)
 </style>

@@ -4,7 +4,7 @@
         <div class="official-title">官方榜</div>
         <!--歌手榜-->
         <div class="official-items">
-          <div class="official-item">
+          <router-link tag="div" to="/singerslist" class="official-item" >
             <img class="official-item-img" :src="rank.artistToplist.coverUrl"/>
             <div class="official-item-update">{{rank.artistToplist.updateFrequency}}</div>
             <div class="official-item-Ranks">
@@ -16,7 +16,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
         <!--赞赏榜-->
         <div class="official-items">
@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="official-items" style="padding-bottom: 123%">
-          <router-link to="/rankdetail" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">
+          <router-link :to="{name: 'RecommendMusic', params: {id: item.id}}" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">
             <img class="official-item-img" :src="item.coverImgUrl"/>
             <div class="official-item-update">{{item.updateFrequency}}</div>
             <div class="official-item-Ranks">
@@ -84,13 +84,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .official
   overflow: hidden
-  position: absolute
-  top: 3rem
-  bottom: 0
-  right: 0
-  left: 0
+  positionAbsolute(3rem,0,0,0)
   .official-title
     padding-top: 1rem
     margin-left: .5rem
@@ -111,18 +108,14 @@ export default {
         border-radius: .4rem
         position: absolute
       .official-item-update
+        positionAbsolute(null,null,.7rem,.5rem)
         color: #fff
-        position: absolute
-        bottom: .7rem
         font-size: .7rem
-        left: .5rem
       .official-item-Ranks
         display: flex
         flex-direction: column
         height: 85%
-        position: absolute
-        top: .8rem
-        left: 36%
+        positionAbsolute(.8rem,null,null,36%)
         border-bottom: 1px solid #bababa
         width: 63%
         padding-bottom: 1%

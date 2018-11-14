@@ -4,7 +4,7 @@
         <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
       </router-link>
       <div class="template-items">
-        <router-link tag="div" :to="{name:'RankDetail', params: {id: item.id}}" class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id" >
+        <router-link tag="div" :to="{name:'RecommendMusic', params: {id: item.id}}" class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id" >
           <div class="template-item-listen" v-if="showPlayCount">
             <i class="iconfont" style="color: #fff">&#xe601;</i>
             <span>{{item.playCount}}</span>
@@ -52,6 +52,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin.styl"
 .template
   height: 0
   padding-bottom: 100%
@@ -73,25 +74,18 @@ export default {
       position: relative
       margin: 0.9rem 0
       .template-item-listen
-        position: absolute
-        right: 0.5rem
+        positionAbsolute(null,0.5rem,null,null)
         z-index: 2
         font-size: 0.8rem
         color: #fff
       .template-item-img
-        position: absolute
-        top: 0
-        left: 0
-        right: 0
+        positionAbsolute(0,0,null,0)
         .template-item-imgcontent
           width: 96%
           display: block
           margin: 0 auto
        .template-item-desc
-          position: absolute
-          bottom: 0rem
-          left: 0
-          right: 0
+          positionAbsolute(null,0,0,0)
           height: 1.5rem
           line-height: 1.1rem
           font-size: 0.8rem

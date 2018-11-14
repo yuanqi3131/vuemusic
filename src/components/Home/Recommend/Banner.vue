@@ -48,13 +48,13 @@ export default {
 
 <style lang="stylus" scoped>
   @import "~styles/variable.styl"
+  @import "~styles/mixin.styl"
  .swiper-pagination >>> .swiper-pagination-bullet-active
   background: $ThemeColor
 .bannerBack
   background: $ThemeColor
   height: 6rem
-  position: relative
-  top: 6.4rem
+  positionRelative(6.4rem)
 .swiper-container
   margin-top: 0rem
   .bannerImg

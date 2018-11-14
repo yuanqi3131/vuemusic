@@ -41,6 +41,7 @@ export default {
 
 <style lang="stylus" scoped>
   @import "~styles/variable"
+  @import "~styles/mixin"
   .mint-tab-item >>>.mint-tab-item-label //>>>不受scoped影响，定制全局
     font-size: 1rem
     width: 2rem
@@ -51,13 +52,12 @@ export default {
   .mint-navbar
     height: 2.5rem
 .nav
-  position: fixed
+  positionFixed(4rem)
   width: 100%
-  top: 4rem
   z-index: 99
 .mint-tab-item
   background: $ThemeColor
-  color: #EAE1E1
+  color: $NavTextColor
   margin-right: -1px;
   .navText
     display: block

@@ -71,13 +71,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .list
   overflow: hidden
+  positionAbsolute(3rem,0,0,0)
   position: absolute
-  top: 3rem
-  right: 0
-  bottom: 0
-  left: 0
 .list-header
   width: 100%
   height: 0
@@ -89,9 +87,7 @@ export default {
     position: relative
     width: 35%
     .list-header-left-playCount
-      position: absolute
-      right: -1rem
-      top: 2rem
+      positionAbsolute(2rem,-1rem,null,null)
       font-size: .7rem
       color: #fff
       z-index: 2
@@ -101,15 +97,12 @@ export default {
       margin-left: 1.4rem
       margin-top: 2rem
     .list-header-left-detail
-      position: absolute
-      right: -1.2rem
+      positionAbsolute(null,-1.2rem,null,null)
       margin-top: -1.6rem
       color: #fff
       font-size: 1.4rem
   .list-header-info
-    position: absolute
-    top: 8%
-    left: 45%
+    positionAbsolute(8%,null,null,45%)
     display: flex
     flex-direction: column
     height: 60%
@@ -138,10 +131,8 @@ export default {
      .list-header-icon
       position: absolute
   .list-header-icon
-    position: absolute
+    positionAbsolute(76%,null,null,0)
     display: flex
-    top: 76%
-    left: 0
     width: 100%
     .list-header-icon-item
       display: flex

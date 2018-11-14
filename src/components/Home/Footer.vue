@@ -22,12 +22,12 @@ export default {}
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin.styl"
   .footer
     width: 100%
     height: 3rem
     background: #fff
-    position: fixed
-    bottom: 0
+    positionFixed(null,null,0,null)
     z-index: 99
     display: flex
     .footer-left
@@ -52,11 +52,9 @@ export default {}
       .footer-right-play
         width: 2rem
         height: 2rem
-        margin-top: 0.5rem
-        margin-right: 0.5rem
+        margin: .5rem .5rem 0 0
       .footer-right-list
         width: 2rem
         height: 2rem
-        margin-top: 0.5rem
-        margin-right: 0.5rem
+        margin: .5rem .5rem 0 0
 </style>

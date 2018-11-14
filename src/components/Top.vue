@@ -50,13 +50,13 @@ export default {
     flex: 1
     align-self: center
     text-align: center
-    color: $TopColor
+    color: $White
     .iconfont
       font-size: 1.5rem
   .top-content
     flex: 6
     align-self: center
-    color: $TopColor
+    color: $White
     font-size: 1.15rem
     white-space: nowrap
     overflow: hidden
@@ -69,7 +69,7 @@ export default {
     flex: 1
     align-self: center
     text-align: center
-    color: $TopColor
+    color: $White
     .iconfont
       font-size: 1.5rem
 </style>

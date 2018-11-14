@@ -5,7 +5,7 @@
       <div slot="left"><i class="iconfont icon-fanhui"></i></div>
       <span slot="content" id="top-content-desc">歌单</span>
     </Top>
-    <MusicHeader :supermeMusic="supermeMusic"></MusicHeader>
+    <MusicList :supermeMusic="supermeMusic"></MusicList>
   </div>
 </div>
 </template>
@@ -13,7 +13,7 @@
 <script>
 import {mapState} from 'vuex'
 import Top from '../components/Top'
-import MusicHeader from '../components/MusicMenu/MusciHeader'
+import MusicList from '../components/MusicMenu/MusicList'
 export default {
   name: 'MusicMenu',
   mounted () {
@@ -24,7 +24,7 @@ export default {
   },
   components: {
     Top,
-    MusicHeader
+    MusicList
   }
 }
 </script>

@@ -12,9 +12,9 @@
 
 <script>
 import Top from '../components/Top'
-import ListHeader from '../components/RankDetail/ListHeader'
+import ListHeader from '../components/RecommendMusic/ListHeader'
 export default {
-  name: 'RankDetail',
+  name: 'RecommendMusic',
   components: {
     Top,
     ListHeader

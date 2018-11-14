@@ -62,6 +62,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "~styles/mixin"
 .content
   width: 100%
   .content-item
@@ -90,9 +91,7 @@ export default {
       position: relative
       .icon-plus
         font-size: 1.5rem
-        position: absolute
-        left: 18%
-        top: 20%
+        positionAbsolute(20%,null,null,18%)
   .content-music-item
     display: flex
     .content-music-item-index
