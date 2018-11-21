@@ -4,7 +4,7 @@
         <div class="template-title"><label class="template-title-desc">{{title}}</label>></div>
       </router-link>
       <div class="template-items">
-        <router-link tag="div" :to="{name:'RecommendMusic', params: {id: item.id}}" class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id" >
+        <router-link tag="div" :to="{name:'MusicMenuDetail', params: {id: item.id}}" class="template-item" v-for="(item,index) in list.slice(0,6)" :key="item.id" >
           <div class="template-item-listen" v-if="showPlayCount">
             <i class="iconfont" style="color: #fff">&#xe601;</i>
             <span>{{item.playCount}}</span>

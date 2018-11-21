@@ -1,6 +1,6 @@
 <template>
 <div class="header">
-  <div class="header-left">
+  <div class="header-left" @click="handleClick">
     <img class="headerIcon" src="static/image/cm2_btm_icn_menu.png" />
   </div>
   <div class="header-middle">
@@ -8,7 +8,7 @@
     <router-link to="/"><img class="headerIcon" src="static/image/cm2_btm_icn_discovery_prs.png"/></router-link>
     <router-link to="/"><img class="headerIcon" src="static/image/player.png"/></router-link>
   </div>
-  <div class="header-right">
+  <div class="header-right" @click="handleSearch">
     <img class="headerIcon" src="static/image/search.png" />
   </div>
 </div>
@@ -16,7 +16,19 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data () {
+    return {
+      showMenu: false
+    }
+  },
+  methods: {
+    handleClick () { // 点击弹出侧边菜单栏
+      this.$emit('showMenu', !this.showMenu)
+    },
+    handleSearch () { // 点击搜索
+    }
+  }
 }
 </script>
 
@@ -30,7 +42,7 @@ export default {
   text-align: center
   position: fixed
   width: 100%
-  z-index: 99
+  z-index: 98
   overflow: hidden
   .header-left
     flex: 0.4

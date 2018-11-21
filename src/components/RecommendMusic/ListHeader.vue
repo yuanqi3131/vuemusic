@@ -75,7 +75,6 @@ export default {
 .list
   overflow: hidden
   positionAbsolute(3rem,0,0,0)
-  position: absolute
 .list-header
   width: 100%
   height: 0

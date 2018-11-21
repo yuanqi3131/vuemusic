@@ -10,14 +10,14 @@
     </div>
   </div>
   <div class="musicList-items">
-    <div class="musicList-item" v-for="(item, index) in MusicList" :key="item.id">
+    <router-link tag="div" :to="{name:'MusicMenuDetail', params: {id: item.id}}" class="musicList-item" v-for="(item, index) in MusicList" :key="item.id">
       <div class="musicList-item-playCount">
         <i class="iconfont" style="color: #fff">&#xe601;</i>
         <span>{{item.playCount}}</span>
       </div>
       <img class="musicList-item-img" :src="item.coverImgUrl"/>
       <span class="musicList-item-desc">{{item.name}}</span>
-    </div>
+    </router-link>
   </div>
 </div>
 </template>

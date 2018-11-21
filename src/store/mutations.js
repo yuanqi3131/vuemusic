@@ -5,7 +5,9 @@ import {
   RECEIVE_ALL_RANK_LIST,
   RECEIVE_SUPREME_MUSIC,
   RECEIVE_MUSIC_LIST,
-  RECEIVE_MUSIC_LIST_INFO
+  RECEIVE_MUSIC_LIST_INFO,
+  RECEIVE_USER_INFO,
+  RECEIVE_USER_DETAIL
 } from './mtations-type'
 
 export default {
@@ -29,5 +31,11 @@ export default {
   },
   [RECEIVE_MUSIC_LIST_INFO] (state, {musicListInfo}) {
     state.musicListInfo = musicListInfo
+  },
+  [RECEIVE_USER_INFO] (state, {userInfo}) {
+    state.userInfo = userInfo
+  },
+  [RECEIVE_USER_DETAIL] (state, {userDetail}) {
+    state.userDetail = userDetail
   }
 }

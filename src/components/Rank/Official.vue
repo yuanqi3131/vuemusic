@@ -2,6 +2,17 @@
     <div class="official" ref="official">
       <div class="official-content">
         <div class="official-title">官方榜</div>
+        <div class="official-items" style="padding-bottom: 123%">
+          <router-link :to="{name: 'MusicMenuDetail', params: {id: item.id}}" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">
+            <img class="official-item-img" :src="item.coverImgUrl"/>
+            <div class="official-item-update">{{item.updateFrequency}}</div>
+            <div class="official-item-Ranks">
+              <div class="official-item-Rank" v-for="(list,index) in item.tracks" :key="index">
+                <p class="official-item-Rank-desc">{{index+1}}.{{list.first}} - {{list.second}}</p>
+              </div>
+            </div>
+          </router-link>
+        </div>
         <!--歌手榜-->
         <div class="official-items">
           <router-link tag="div" to="/singerslist" class="official-item" >
@@ -29,17 +40,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="official-items" style="padding-bottom: 123%">
-          <router-link :to="{name: 'RecommendMusic', params: {id: item.id}}" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">
-            <img class="official-item-img" :src="item.coverImgUrl"/>
-            <div class="official-item-update">{{item.updateFrequency}}</div>
-            <div class="official-item-Ranks">
-              <div class="official-item-Rank" v-for="(list,index) in item.tracks" :key="index">
-                <p class="official-item-Rank-desc">{{index+1}}.{{list.first}} - {{list.second}}</p>
-              </div>
-            </div>
-          </router-link>
         </div>
         <Global :globalRank="globalRank"></Global>
       </div>
@@ -100,7 +100,7 @@ export default {
       position: relative
       margin-top: .4rem
       font-size: .9rem
-      height: 0
+      /*height: 0*/
       padding-bottom: 30%
       .official-item-img
         width: 34%

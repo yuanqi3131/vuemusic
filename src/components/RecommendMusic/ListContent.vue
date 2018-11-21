@@ -68,7 +68,7 @@ export default {
   .content-item
     display: flex
     .content-item-headL
-      width: 67%
+      width: 70%
       height: 2.6rem
       border-bottom: 1px solid rgba(190, 188, 188, 0.15)
       display: flex
@@ -81,7 +81,7 @@ export default {
         font-size: .9rem
         margin-top: .1rem
     .content-item-headR
-      width: 20%
+      width: 30%
       background-color: #dd4137
       display: flex
       align-items: center
@@ -95,31 +95,39 @@ export default {
   .content-music-item
     display: flex
     .content-music-item-index
-      flex: 1
       display: flex
+      width: 12%
       align-items: center
       justify-content: center
       color: #bababa
     .content-music-item-texts
       height: 3.2rem
       border-bottom: 1px solid rgba(190, 188, 188, 0.15)
-      flex: 8
+      width: 88%
       display: flex
       .content-music-item-text
         display: flex
+        width: 75%
         flex-direction: column
-        flex: 3.1
-        line-height: 1.2rem
+        line-height: 1.8rem
         justify-content: center
         .content-music-item-text-name
           font-size: .9rem
+          width: 95%
+          overflow: hidden
+          white-space: nowrap
+          text-overflow: ellipsis
         .content-music-item-text-songer
           font-size: .7rem
           color: #bababa
           line-height: .7rem
+          width: 95%
+          overflow: hidden
+          white-space: nowrap
+          text-overflow: ellipsis
       .content-music-item-icon
-        flex: 1
         display: flex
+        width: 25%
         align-items: center
         justify-content: center
         .icon-shipin

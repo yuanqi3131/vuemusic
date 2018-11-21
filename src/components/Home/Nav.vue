@@ -54,7 +54,7 @@ export default {
 .nav
   positionFixed(4rem)
   width: 100%
-  z-index: 99
+  z-index: 98
 .mint-tab-item
   background: $ThemeColor
   color: $NavTextColor

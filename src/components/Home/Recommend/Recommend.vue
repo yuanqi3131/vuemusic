@@ -5,7 +5,7 @@
     <IconNav></IconNav>
     <Template title="推荐歌单" :list="recommendList" router="/musicmenu"></Template>
     <Template title="最新音乐" :list="recommendList" router="/musicmenu"></Template>
-    <Template title="主播电台" :list="anchorRadios" router="/musicmenu"></Template>
+    <Radio title="主播电台" :list="anchorRadios"></Radio>
     <Footer></Footer>
   </div>
 </div>
@@ -17,6 +17,7 @@ import Banner from './Banner'
 import IconNav from './IconNav'
 import Template from './Template'
 import Footer from '../Footer'
+import Radio from './Radio'
 import BScroll from 'better-scroll'
 export default {
   name: 'Recommend',
@@ -24,11 +25,13 @@ export default {
     this.$store.dispatch('getRecommendList')
     this.$store.dispatch('getAnchorRadios')
   },
-  activated () {
-    this.scroll = new BScroll(this.$refs.recommend, {
-      scrollY: true,
-      click: true
-    })
+  watch: {
+    getRecommendList () {
+      this.scroll = new BScroll(this.$refs.recommend, {
+        scrollY: true,
+        click: true
+      })
+    }
   },
   computed: {
     ...mapState(['recommendList', 'anchorRadios'])
@@ -37,7 +40,8 @@ export default {
     Banner,
     IconNav,
     Template,
-    Footer
+    Footer,
+    Radio
   }
 }
 </script>

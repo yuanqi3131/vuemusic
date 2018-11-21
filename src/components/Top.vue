@@ -1,6 +1,6 @@
 <template>
-  <div class="top">
-    <div class="top-left"  @click="goback()"><slot name="left"></slot></div>
+  <div class="top" :class="ShowBackground === true ? 'notShowBackground' : ''" >
+    <div class="top-left" @click="goback()"><slot name="left"></slot></div>
     <div id="top-content" class="top-content" @click="textMove()">
       <slot name="content"></slot>
     </div>
@@ -13,11 +13,7 @@
 export default {
   name: 'Top',
   props: {
-    left: String,
-    content: String,
-    right: String
-  },
-  mounted () {
+    ShowBackground: Boolean
   },
   methods: {
     textMove () {
@@ -64,7 +60,7 @@ export default {
     flex: 1
     align-self: center
     text-align: center
-    color: $TopColor
+    color: $White
   .top-right
     flex: 1
     align-self: center
@@ -72,4 +68,8 @@ export default {
     color: $White
     .iconfont
       font-size: 1.5rem
+.notShowBackground
+  position: absolute
+  z-index: 99
+  background-color: transparent
 </style>

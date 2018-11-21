@@ -4,4 +4,6 @@ export const RECEIVE_ANCHOR_RADIOS = 'receive_anchor_radios' // 接收主播电�
 export const RECEIVE_ALL_RANK_LIST = 'receive_all_rank_list' // 接收所有榜单内容摘要
 export const RECEIVE_SUPREME_MUSIC = 'RECEIVE_SUPREME_MUSIC' // 接收精品歌单
 export const RECEIVE_MUSIC_LIST = 'receive_Music_List' // 接收全部歌单
-export const RECEIVE_MUSIC_LIST_INFO = 'RECEIVE_MUSIC_LIST_INFO' // 接收歌单详情页信息
+export const RECEIVE_MUSIC_LIST_INFO = 'receive_music_list_info' // 接收歌单详情页信息
+export const RECEIVE_USER_INFO = 'receive_user_info' // 登录获取用户信息
+export const RECEIVE_USER_DETAIL = 'receive_user_detail' // 登录获取用户详情
