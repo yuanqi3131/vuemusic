@@ -11,6 +11,7 @@ import AnchorRadio from '../pages/AnchorRadio'
 import LoginIndex from '../pages/LoginIndex'
 import MobileLogin from '../pages/MobileLogin'
 import Search from '../pages/Search'
+import SingerCategory from '../pages/SingerCategory'
 Vue.use(Router)
 
 export default new Router({
@@ -66,9 +67,14 @@ export default new Router({
       path: '/MobileLogin'
     },
     {
-      component: Search, // 搜素页面
+      component: Search, // 搜索页面
       name: 'Search',
       path: '/search'
+    },
+    {
+      component: SingerCategory, // 歌手分类页面
+      name: 'SingerCategory',
+      path: '/singercategory'
     }
   ]
 })

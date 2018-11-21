@@ -7,7 +7,10 @@ import {
   RECEIVE_MUSIC_LIST,
   RECEIVE_MUSIC_LIST_INFO,
   RECEIVE_USER_INFO,
-  RECEIVE_USER_DETAIL
+  RECEIVE_USER_DETAIL,
+  RECEIVE_HOT_SEARCH,
+  RECEIVE_HOT_SINGER,
+  RECEIVE_SINGER_LIST
 } from './mtations-type'
 
 export default {
@@ -37,5 +40,14 @@ export default {
   },
   [RECEIVE_USER_DETAIL] (state, {userDetail}) {
     state.userDetail = userDetail
+  },
+  [RECEIVE_HOT_SEARCH] (state, {hotSearch}) {
+    state.hotSearch = hotSearch
+  },
+  [RECEIVE_HOT_SINGER] (state, {hotSinger}) {
+    state.hotSinger = hotSinger
+  },
+  [RECEIVE_SINGER_LIST] (state, {singerList}) {
+    state.singerCategory = singerList
   }
 }

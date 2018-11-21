@@ -36,12 +36,14 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "~styles/variable"
+@import "~styles/variable.styl"
+@import "~styles/mixin.styl"
 .top
   width: 100%
   height: 3rem
   background: $ThemeColor
   display: flex
+  position: relative
   .top-left
     flex: 1
     align-self: center

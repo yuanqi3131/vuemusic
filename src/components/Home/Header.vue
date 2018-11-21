@@ -27,6 +27,7 @@ export default {
       this.$emit('showMenu', !this.showMenu)
     },
     handleSearch () { // 点击搜索
+      this.$router.push('/search')
     }
   }
 }

@@ -7,3 +7,6 @@ export const RECEIVE_MUSIC_LIST = 'receive_Music_List' // 接收全部歌单
 export const RECEIVE_MUSIC_LIST_INFO = 'receive_music_list_info' // 接收歌单详情页信息
 export const RECEIVE_USER_INFO = 'receive_user_info' // 登录获取用户信息
 export const RECEIVE_USER_DETAIL = 'receive_user_detail' // 登录获取用户详情
+export const RECEIVE_HOT_SEARCH = 'receive_hot_search' // 获得热门搜索
+export const RECEIVE_HOT_SINGER = 'receive_hot_singer' // 获得热门歌手
+export const RECEIVE_SINGER_LIST = 'RECEIVE_SINGER_LIST' // 获得歌手分类

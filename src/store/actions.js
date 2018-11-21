@@ -6,7 +6,10 @@ import {
   RECEIVE_SUPREME_MUSIC,
   RECEIVE_MUSIC_LIST, RECEIVE_MUSIC_LIST_INFO,
   RECEIVE_USER_INFO,
-  RECEIVE_USER_DETAIL
+  RECEIVE_USER_DETAIL,
+  RECEIVE_HOT_SEARCH,
+  RECEIVE_HOT_SINGER,
+  RECEIVE_SINGER_LIST
 } from './mtations-type'
 import {
   resBanners,
@@ -15,7 +18,10 @@ import {
   resAllRankList,
   resSupremeMusic,
   resMusicList,
-  resMusicListInfo
+  resMusicListInfo,
+  resHotSearch,
+  resHotSinger,
+  resSingerList
 } from '../api'
 
 export default {
@@ -73,5 +79,26 @@ export default {
   },
   getUserDetail ({commit}, userDetail) {
     commit(RECEIVE_USER_DETAIL, {userDetail})
+  },
+  async getHotSearch ({commit}) {
+    const result = await resHotSearch()
+    if (result.code === 200) {
+      const hotSearch = result.result.hots
+      commit(RECEIVE_HOT_SEARCH, {hotSearch})
+    }
+  },
+  async getHotSinger ({commit}) {
+    const result = await resHotSinger()
+    if (result.code === 200) {
+      const hotSinger = result.artists
+      commit(RECEIVE_HOT_SINGER, {hotSinger})
+    }
+  },
+  async getSingerList ({commit}) {
+    const result = await resSingerList()
+    if (result.code === 200) {
+      const singerList = result.artists
+      commit(RECEIVE_SINGER_LIST, {singerList})
+    }
   }
 }
