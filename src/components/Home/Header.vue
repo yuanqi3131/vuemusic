@@ -4,9 +4,9 @@
     <img class="headerIcon" src="static/image/cm2_btm_icn_menu.png" />
   </div>
   <div class="header-middle">
-    <router-link to="/"><img class="headerIcon" src="static/image/cm2_btm_icn_music_prs.png" /></router-link>
-    <router-link to="/"><img class="headerIcon" src="static/image/cm2_btm_icn_discovery_prs.png"/></router-link>
-    <router-link to="/"><img class="headerIcon" src="static/image/player.png"/></router-link>
+    <img @click="clickIcon('myself')" class="headerIcon" src="static/image/cm2_btm_icn_music_prs.png" />
+    <img @click="clickIcon('index')" class="headerIcon" src="static/image/cm2_btm_icn_discovery_prs.png"/>
+    <img @click="clickIcon('play')" class="headerIcon" src="static/image/player.png"/>
   </div>
   <div class="header-right" @click="handleSearch">
     <img class="headerIcon" src="static/image/search.png" />
@@ -19,7 +19,8 @@ export default {
   name: 'Header',
   data () {
     return {
-      showMenu: false
+      showMenu: false,
+      active: 'index'
     }
   },
   methods: {
@@ -28,6 +29,9 @@ export default {
     },
     handleSearch () { // 点击搜索
       this.$router.push('/search')
+    },
+    clickIcon (val) {
+      this.$emit('changePage', val)
     }
   }
 }
@@ -35,6 +39,8 @@ export default {
 
 <style lang="stylus" scoped>
 @import "~styles/variable.styl"
+.header-middle>>>.mint-navbar
+  background-color: $ThemeColor
 .header
   background: $ThemeColor
   display: flex

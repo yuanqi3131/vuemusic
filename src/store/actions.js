@@ -9,7 +9,8 @@ import {
   RECEIVE_USER_DETAIL,
   RECEIVE_HOT_SEARCH,
   RECEIVE_HOT_SINGER,
-  RECEIVE_SINGER_LIST
+  RECEIVE_SINGER_LIST,
+  RECEIVE_USER_SONG_LIST
 } from './mtations-type'
 import {
   resBanners,
@@ -100,5 +101,8 @@ export default {
       const singerList = result.artists
       commit(RECEIVE_SINGER_LIST, {singerList})
     }
+  },
+  getUserSongList ({commit}, userSongList) {
+    commit(RECEIVE_USER_SONG_LIST, {userSongList})
   }
 }

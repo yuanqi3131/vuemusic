@@ -6,8 +6,17 @@
   <transition name="background">
     <div v-show="showLeftMenu" class="background" @click="clickBackground"></div>
   </transition>
-  <Header v-on:showMenu="showMenu"></Header>
-  <Nav :class="showLeftMenu ? showMenuStatus : ''"></Nav>
+  <Header v-on:showMenu="showMenu" v-on:changePage="changePage"></Header>
+  <mt-tab-container v-model="active">
+    <mt-tab-container-item id="myself">
+      <Myself></Myself>
+    </mt-tab-container-item>
+    <mt-tab-container-item id="index">
+      <Nav :class="showLeftMenu ? showMenuStatus : ''"></Nav>
+    </mt-tab-container-item>
+    <mt-tab-container-item id="play">
+    </mt-tab-container-item>
+  </mt-tab-container>
 </div>
 </template>
 
@@ -15,11 +24,13 @@
 import Header from '../components/Home/Header'
 import Nav from '../components/Home/Nav'
 import LeftMenu from '../components/Home/LeftMenu'
+import Myself from '../components/Home/Myself/Myself'
 export default {
   data () {
     return {
       showLeftMenu: false,
-      showMenuStatus: 'showMenuStatus'
+      showMenuStatus: 'showMenuStatus',
+      active: 'myself'
     }
   },
   methods: {
@@ -28,12 +39,16 @@ export default {
     },
     clickBackground () {
       this.showLeftMenu = false
+    },
+    changePage (val) {
+      this.active = val
     }
   },
   components: {
     Header,
     Nav,
-    LeftMenu
+    LeftMenu,
+    Myself
   }
 }
 </script>

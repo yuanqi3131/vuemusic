@@ -10,7 +10,8 @@ import {
   RECEIVE_USER_DETAIL,
   RECEIVE_HOT_SEARCH,
   RECEIVE_HOT_SINGER,
-  RECEIVE_SINGER_LIST
+  RECEIVE_SINGER_LIST,
+  RECEIVE_USER_SONG_LIST
 } from './mtations-type'
 
 export default {
@@ -49,5 +50,8 @@ export default {
   },
   [RECEIVE_SINGER_LIST] (state, {singerList}) {
     state.singerCategory = singerList
+  },
+  [RECEIVE_USER_SONG_LIST] (state, {userSongList}) {
+    state.userSongList = userSongList
   }
 }

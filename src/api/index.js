@@ -13,3 +13,4 @@ export const resUserDetail = (uid) => ajax(BASE_URL + '/user/detail?uid=' + uid 
 export const resHotSearch = () => ajax(BASE_URL + '/search/hot')
 export const resHotSinger = () => ajax(BASE_URL + '/top/artists')
 export const resSingerList = () => ajax(BASE_URL + '/artist/list')
+export const resUserSongList = (uid) => ajax(BASE_URL + '/user/playlist?uid=' + uid + '')

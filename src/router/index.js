@@ -1,17 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../pages/Home'
-import Shop from '../pages/Shop'
-import Rank from '../pages/Rank'
-import MusicMenu from '../pages/MusicMenu'
-import SupermeMusic from '../pages/SupermeMusic'
-import MusicMenuDetail from '../pages/MusicMenuDetail'
-import SingersList from '../pages/SingersList'
-import AnchorRadio from '../pages/AnchorRadio'
-import LoginIndex from '../pages/LoginIndex'
-import MobileLogin from '../pages/MobileLogin'
-import Search from '../pages/Search'
-import SingerCategory from '../pages/SingerCategory'
 Vue.use(Router)
 
 export default new Router({
@@ -19,62 +7,62 @@ export default new Router({
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: resolve => require(['../pages/Home'], resolve)
     },
     {
       path: '/shop',
       name: 'Shop',
-      component: Shop
+      component: resolve => require(['../pages/Shop'], resolve)
     },
     {
-      component: Rank,
       name: 'Rank',
-      path: '/rank'
+      path: '/rank',
+      component: resolve => require(['../pages/Rank'], resolve)
     },
     {
-      component: MusicMenu,
       name: 'MusicMenu',
-      path: '/musicmenu'
+      path: '/musicmenu',
+      component: resolve => require(['../pages/MusicMenu'], resolve)
     },
     {
-      component: SupermeMusic,
       name: 'SupermeMusic',
-      path: '/supermemusic'
+      path: '/supermemusic',
+      component: resolve => require(['../pages/SupermeMusic'], resolve)
     },
     {
-      component: MusicMenuDetail,
       name: 'MusicMenuDetail',
-      path: '/MusicMenuDetail/:id'
+      path: '/MusicMenuDetail/:id',
+      component: resolve => require(['../pages/MusicMenuDetail'], resolve)
     },
     {
-      component: SingersList,
       name: 'SingersList',
-      path: '/singerslist'
+      path: '/singerslist',
+      component: resolve => require(['../pages/SingersList'], resolve)
     },
     {
-      component: AnchorRadio,
       name: 'AnchorRadio',
-      path: '/anchorradio'
+      path: '/anchorradio',
+      component: resolve => require(['../pages/AnchorRadio'], resolve)
     },
     {
-      component: LoginIndex, // 登录页面
       name: 'LoginIndex',
-      path: '/loginindex'
+      path: '/loginindex',
+      component: resolve => require(['../pages/LoginIndex'], resolve)
     },
     {
-      component: MobileLogin, // 手机登录页面
       name: 'MobileLogin',
-      path: '/MobileLogin'
+      path: '/MobileLogin',
+      component: resolve => require(['../pages/MobileLogin'], resolve)
     },
     {
-      component: Search, // 搜索页面
       name: 'Search',
-      path: '/search'
+      path: '/search',
+      component: resolve => require(['../pages/Search'], resolve)
     },
     {
-      component: SingerCategory, // 歌手分类页面
       name: 'SingerCategory',
-      path: '/singercategory'
+      path: '/singercategory',
+      component: resolve => require(['../pages/SingerCategory'], resolve)
     }
   ]
 })

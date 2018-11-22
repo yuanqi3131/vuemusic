@@ -52,7 +52,7 @@ export default {
   .mint-navbar
     height: 2.5rem
 .nav
-  positionFixed(4rem)
+  positionFixed(4rem,null,null,0)
   width: 100%
   z-index: 98
 .mint-tab-item

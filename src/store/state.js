@@ -14,5 +14,6 @@ export default {
   userDetail: {}, // 用户详情
   hotSearch: {}, // 热门搜索
   hotSinger: [], // 热门歌手
-  singerCategory: [] // 歌手分类
+  singerCategory: [], // 歌手分类
+  userSongList: [] // 用户创建歌单
 }

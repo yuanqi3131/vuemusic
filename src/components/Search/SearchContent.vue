@@ -15,7 +15,7 @@
         {{item.first}}
       </div>
     </div>
-    <div class="content-history">
+    <div class="content-history" v-if="showHistory">
       <div class="content-history-header">
         <span class="content-history-header-desc">历史记录</span>
         <i @click="cleanHistory" class="iconfont icon-lajitong content-history-header-clean"></i>
@@ -29,11 +29,13 @@
 
 <script>
 import {mapState, mapActions} from 'vuex'
+import { MessageBox } from 'mint-ui'
 export default {
   name: 'SearchContent',
   data () {
     return {
-      keywords: []
+      keywords: [],
+      showHistory: false
     }
   },
   mounted () {
@@ -44,11 +46,23 @@ export default {
   methods: {
     ...mapActions(['getHotSearch', 'getHotSinger']),
     cleanHistory () {
-      localStorage.removeItem('keywords')
+      MessageBox.confirm('', {
+        message: '确定清空全部历史记录?',
+        title: '',
+        confirmButtonText: '清空'
+      }).then(action => {
+        localStorage.removeItem('keywords')
+        this.showHistory = false
+      })
     }
   },
   computed: {
     ...mapState(['hotSearch', 'hotSinger'])
+  },
+  watch: {
+    keywords (val) {
+      val === null ? this.showHistory = false : this.showHistory = true
+    }
   }
 }
 </script>
