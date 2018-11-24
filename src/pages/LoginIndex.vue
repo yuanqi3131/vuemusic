@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: 'LoginIndex'
+  name: 'LoginIndex' // 登录页面
 }
 </script>
 

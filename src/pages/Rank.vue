@@ -15,7 +15,7 @@ import Top from '../components/Top'
 import Official from '../components/Rank/Official'
 import {mapState} from 'vuex'
 export default {
-  name: 'Rank',
+  name: 'Rank', //排行榜页面
   mounted () {
     this.$store.dispatch('getAllRankList')
   },

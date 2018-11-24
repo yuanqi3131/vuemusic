@@ -6,10 +6,10 @@
     </div>
     <div class="menu-header" v-if="showUserInfo" :style="{backgroundImage: 'url('+ userDetail.profile.backgroundUrl +')'}">
       <img class="menu-header-avatar" :src="userDetail.profile.avatarUrl"/>
-      <div class="menu-header-text">
+      <router-link  tag="div" to="/person" class="menu-header-text">
         <p class="menu-header-text-username">{{userDetail.profile.nickname}}</p>
         <div class="menu-header-text-level">Lv.{{userDetail.level}}</div>
-      </div>
+      </router-link>
       <div class="menu-header-signIn">
         <i class="iconfont icon-jinqianguan"></i>
         <span class="menu-header-signIn-desc">签到</span>

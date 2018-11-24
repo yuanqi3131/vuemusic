@@ -21,9 +21,9 @@
 <script>
 import Top from '../components/Top'
 import {Toast} from 'mint-ui'
-import {MobileLogin, resUserDetail} from '../api'
+import {MobileLogin} from '../api'
 export default {
-  name: 'MobileLogin',
+  name: 'MobileLogin', // 手机登录页面
   data () {
     return {
       mobile: '', // 手机号
@@ -73,13 +73,21 @@ export default {
         })
         return
       }
-      const result = await MobileLogin(mobile, password) // 发送ajax请求
-      if (result.code === 200) {
-        this.$store.dispatch('getUserInfo', result)
-        this.$router.push('/') // 跳转首页
-      } else {
+      try {
+        var result = await MobileLogin(mobile, password) // 发送ajax请求
+        if (result.code === 200) {
+          this.$store.dispatch('getUserInfo', result)
+          this.$router.push('/') // 跳转首页
+        } else {
+          Toast({
+            message: result.msg,
+            position: 'bottom',
+            duration: 5000
+          })
+        }
+      } catch (e) {
         Toast({
-          message: '用户名或密码错误',
+          message: result.msg,
           position: 'bottom',
           duration: 5000
         })

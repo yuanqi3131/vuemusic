@@ -12,7 +12,7 @@
 import Top from '../components/Top'
 import Content from '../components/SingersList/Content'
 export default {
-  name: 'SingersList', // 歌手榜
+  name: 'SingersList', // 排行榜中歌手榜
   components: {
     Top,
     Content

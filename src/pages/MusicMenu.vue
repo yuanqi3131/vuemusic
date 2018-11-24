@@ -15,7 +15,7 @@ import {mapState} from 'vuex'
 import Top from '../components/Top'
 import MusicList from '../components/MusicMenu/MusicList'
 export default {
-  name: 'MusicMenu',
+  name: 'MusicMenu', // 歌单页面
   mounted () {
     this.$store.dispatch('getSupermeMusic')
   },

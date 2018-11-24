@@ -63,6 +63,11 @@ export default new Router({
       name: 'SingerCategory',
       path: '/singercategory',
       component: resolve => require(['../pages/SingerCategory'], resolve)
+    },
+    {
+      name: 'Person',
+      path: '/person',
+      component: resolve => require(['../pages/Person'], resolve)
     }
   ]
 })

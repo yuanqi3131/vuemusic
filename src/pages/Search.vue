@@ -9,7 +9,7 @@
 import Top from '../components/Search/Top'
 import Content from '../components/Search/SearchContent'
 export default {
-  name: 'Search',
+  name: 'Search', // 搜索页面
   components: {
     Top,
     Content

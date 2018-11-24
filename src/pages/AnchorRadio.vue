@@ -14,7 +14,7 @@
 import Top from '../components/Top'
 import Radio from '../components/AnchorRadio/Radio'
 export default {
-  name: 'AnchorRadio',
+  name: 'AnchorRadio', // 主播电台详情页面
   components: {
     Top,
     Radio

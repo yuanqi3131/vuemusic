@@ -8,6 +8,7 @@
 <script>
 import Top from '../components/Top'
 export default {
+  name: 'Shop', //商品页面
   data () {
     return {
       url: this.$route.params.url

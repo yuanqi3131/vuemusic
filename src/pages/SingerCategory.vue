@@ -10,7 +10,7 @@
 <script>
 import Top from '../components/Top'
 export default {
-  name: 'SingerCategory',
+  name: 'SingerCategory', // 歌手分类页
   components: {
     Top
   }

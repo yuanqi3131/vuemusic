@@ -12,9 +12,9 @@
 
 <script>
 import Top from '../components/Top'
-import ListHeader from '../components/RecommendMusic/ListHeader'
+import ListHeader from '../components/MusicMenuDetail/ListHeader'
 export default {
-  name: 'RecommendMusic',
+  name: 'MusicMenuDetail', // 歌单详情页
   components: {
     Top,
     ListHeader

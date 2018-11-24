@@ -13,7 +13,7 @@
 import Top from '../components/Top'
 import SuperList from '../components/SupermeMusic/SuperList'
 export default {
-  name: 'SupermeMusic',
+  name: 'SupermeMusic', // 精品歌单
   components: {
     Top,
     SuperList

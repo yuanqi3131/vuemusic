@@ -25,13 +25,19 @@ import Header from '../components/Home/Header'
 import Nav from '../components/Home/Nav'
 import LeftMenu from '../components/Home/LeftMenu'
 import Myself from '../components/Home/Myself/Myself'
+import {resUserSongList} from '../api'
 export default {
+  name: 'Home', // 推荐首页
   data () {
     return {
       showLeftMenu: false,
       showMenuStatus: 'showMenuStatus',
-      active: 'myself'
+      active: 'index', // 进入home页面默认菜单项
+      userInfo: {} // 用户信息
     }
+  },
+  mounted () {
+    this.userInfo = this.$store.state.userInfo
   },
   methods: {
     showMenu (data) {
@@ -42,6 +48,19 @@ export default {
     },
     changePage (val) {
       this.active = val
+    },
+    async getUserSongList () { // 异步获取用户歌单
+      const result = await resUserSongList(this.userInfo.profile.userId)
+      if (result.code === 200) {
+        this.$store.dispatch('getUserSongList', result.playlist)
+      }
+    }
+  },
+  watch: {
+    userInfo (val) {
+      if (val.code !== undefined && val.code === 200) {
+        this.getUserSongList()
+      }
     }
   },
   components: {
