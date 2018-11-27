@@ -37,6 +37,7 @@ export default {
     state.musicListInfo = musicListInfo
   },
   [RECEIVE_USER_INFO] (state, {userInfo}) {
+    localStorage.setItem('userInfo', userInfo)
     state.userInfo = userInfo
   },
   [RECEIVE_USER_DETAIL] (state, {userDetail}) {

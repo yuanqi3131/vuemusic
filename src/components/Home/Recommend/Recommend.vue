@@ -27,10 +27,16 @@ export default {
   },
   watch: {
     getRecommendList () {
-      this.scroll = new BScroll(this.$refs.recommend, {
-        scrollY: true,
-        click: true
-      })
+      // this.scroll = new BScroll(this.$refs.recommend, {
+      //   scrollY: true,
+      //   click: true,
+      //   pullDownRefresh: {
+      //     threshold: 40
+      //   } // 下拉刷新
+      // })
+      // this.scroll.on('scroll', (pos) => {
+      //   alert(pos.y)
+      // })
     }
   },
   computed: {

@@ -61,8 +61,8 @@ export default {
       commit(RECEIVE_SUPREME_MUSIC, {supermeMusic})
     }
   },
-  async getMusicList ({commit}) {
-    const result = await resMusicList()
+  async getMusicList ({commit}, {limit, offset}) {
+    const result = await resMusicList(limit, offset)
     if (result.code === 200) {
       const musicList = result.playlists
       commit(RECEIVE_MUSIC_LIST, {musicList})

@@ -15,7 +15,7 @@
         </div>
         </div>
       </router-link>
-      <MusicContent></MusicContent>
+      <MusicContent :showLoading="showLoading" :musicList="musicList"></MusicContent>
     </div>
   </div>
 </template>
@@ -23,21 +23,63 @@
 <script>
 import BScroll from 'better-scroll'
 import MusicContent from './MusicContent'
+import {resMusicList} from '../../api'
+import {mapState} from 'vuex'
 export default {
   name: 'MusicList',
+  data () {
+    return {
+      showLoading: false, // 展示正在加载的文字
+      limit: 20, // 每页的数量
+      page: 1, // 第几页
+      musicList: [] // 歌单
+    }
+  },
   props: {
     supermeMusic: Array
   },
-  updated () {
-    this.$nextTick(() => {
-      if (!this.scroll) {
+  mounted () {
+    this.$store.dispatch('getMusicList', ({'limit': 20, 'offset': 0}))
+    this.handlerScroll()
+  },
+  methods: {
+    handlerScroll () {
+      this.$nextTick(() => {
         this.scroll = new BScroll(this.$refs.musicList, {
-          click: true
+          click: true,
+          pullUpLoad: true
         })
-      } else {
+        this.scroll.on('pullingUp', () => { // 绑定上拉事件
+          const {limit, page} = this
+          this.showLoading = true
+          const offset = page * limit
+          this.pullGetMusic(limit, offset)
+        })
+      })
+    },
+    async pullGetMusic (limit, offset) { // 异步获取数据 分页
+      try {
+        const result = await resMusicList(limit, offset)
+        if (result.code === 200) {
+          this.showLoading = false
+          this.page = this.page + 1
+          this.musicList = this.musicList.concat(result.playlists)
+          // this.$store.state.MusicList = this.$store.state.MusicList.concat(result.playlists)
+          this.scroll.finishPullUp()
+          this.scroll.refresh()
+        }
         this.scroll.refresh()
+      } catch (e) {
       }
-    })
+    }
+  },
+  computed: {
+    ...mapState(['MusicList'])
+  },
+  watch: {
+    MusicList (val) {
+      this.musicList = val
+    }
   },
   components: {
     MusicContent

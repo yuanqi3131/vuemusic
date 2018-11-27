@@ -37,7 +37,7 @@ export default {
     }
   },
   mounted () {
-    this.userInfo = this.$store.state.userInfo
+    this.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   },
   methods: {
     showMenu (data) {
@@ -50,6 +50,7 @@ export default {
       this.active = val
     },
     async getUserSongList () { // 异步获取用户歌单
+      debugger
       const result = await resUserSongList(this.userInfo.profile.userId)
       if (result.code === 200) {
         this.$store.dispatch('getUserSongList', result.playlist)

@@ -76,6 +76,7 @@ export default {
       try {
         var result = await MobileLogin(mobile, password) // 发送ajax请求
         if (result.code === 200) {
+          sessionStorage.setItem('userInfo', JSON.stringify(result))
           this.$store.dispatch('getUserInfo', result)
           this.$router.push('/') // 跳转首页
         } else {
@@ -87,7 +88,7 @@ export default {
         }
       } catch (e) {
         Toast({
-          message: result.msg,
+          message: e.data.msg,
           position: 'bottom',
           duration: 5000
         })

@@ -10,7 +10,9 @@
     </div>
   </div>
   <div class="musicList-items">
-    <router-link tag="div" :to="{name:'MusicMenuDetail', params: {id: item.id}}" class="musicList-item" v-for="(item, index) in MusicList" :key="item.id">
+    <router-link tag="div" :to="{name:'MusicMenuDetail', params: {id: item.id}}" class="musicList-item"
+    v-for="(item, index) in musicList" :key="index"
+    >
       <div class="musicList-item-playCount">
         <i class="iconfont" style="color: #fff">&#xe601;</i>
         <span>{{item.playCount}}</span>
@@ -18,23 +20,28 @@
       <img class="musicList-item-img" :src="item.coverImgUrl"/>
       <span class="musicList-item-desc">{{item.name}}</span>
     </router-link>
+    <div v-if="showLoading" class="musicList-loading">
+      <mt-spinner type="fading-circle"></mt-spinner>
+      加载中...
+    </div>
   </div>
 </div>
 </template>
 
 <script>
-import {mapState} from 'vuex'
 export default {
   name: 'MusicContent',
-  mounted () {
-    this.$store.dispatch('getMusicList')
+  props: {
+    showLoading: Boolean,
+    musicList: Array
   },
-  computed: {
-    ...mapState(['MusicList'])
+  data () {
+    return {
+    }
   },
   watch: {
-    MusicList () {
-      const that = this.MusicList
+    musicList () {
+      const that = this.musicList
       this.$nextTick(() => {
         for (let i = 0; i < that.length; i++) {
           if (that[i].playCount > 99999) {
@@ -51,6 +58,7 @@ export default {
   @import "~styles/mixin"
 .musicList
   positionRelative(1rem)
+  padding-bottom: 1rem
 .musicList-title-choose
   font-weight: bold
   margin-left: .5rem
@@ -70,13 +78,19 @@ export default {
    display: flex
    flex-wrap: wrap
    margin-top: 1.5rem
+   padding-bottom: 2rem
+   position: relative
+   .musicList-loading
+     padding-bottom: 2rem
+     margin: 0 auto
+     display: flex
+     align-items: center
+     font-size: .8rem
    .musicList-item
-     display: flex
-     flex-direction: column
-     width: 50%
+     width: 49%
      height: 0
-     padding-bottom: 60%
-     display: flex
+     padding-bottom: 63%
+     padding-left: 1%
      position: relative
     .musicList-item-playCount
       positionAbsolute(null,1rem,null,null)
@@ -85,10 +99,11 @@ export default {
       font-size: .8rem
     .musicList-item-img
       width: 96%
-      height: 80%
+      height: 75%
       position: absolute
+      border-radius: .4rem
     .musicList-item-desc
       line-height: 1.2rem
       font-size: .8rem
-      positionAbsolute(81%)
+      positionAbsolute(77%)
 </style>

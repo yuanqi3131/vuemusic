@@ -104,7 +104,7 @@ export default {
     }
   },
   mounted () {
-    this.userInfo = this.$store.state.userInfo
+    this.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
   },
   methods: {
     Login () {
