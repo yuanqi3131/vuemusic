@@ -10,7 +10,10 @@ import {
   RECEIVE_HOT_SEARCH,
   RECEIVE_HOT_SINGER,
   RECEIVE_SINGER_LIST,
-  RECEIVE_USER_SONG_LIST
+  RECEIVE_USER_SONG_LIST,
+  RECEIVE_SEARCH_LIST,
+  RECEIVE_SEARCH_SONGS,
+  RECEIVE_CLEAN_SONG
 } from './mtations-type'
 import {
   resBanners,
@@ -22,7 +25,8 @@ import {
   resMusicListInfo,
   resHotSearch,
   resHotSinger,
-  resSingerList
+  resSingerList,
+  resSearchList
 } from '../api'
 
 export default {
@@ -104,5 +108,15 @@ export default {
   },
   getUserSongList ({commit}, userSongList) {
     commit(RECEIVE_USER_SONG_LIST, {userSongList})
+  },
+  async getSearchList ({commit}, {keyword, limit, offset, type}) {
+    const result = await resSearchList(keyword, limit, offset, type)
+    return result
+  },
+  getSearchSongs ({commit}, songs) {
+    commit(RECEIVE_SEARCH_SONGS, songs)
+  },
+  getCleanSongs ({commit}, cleanSongs) {
+    commit(RECEIVE_CLEAN_SONG, cleanSongs)
   }
 }

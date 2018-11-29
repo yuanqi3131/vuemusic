@@ -15,7 +15,11 @@ export default {
     return {
       keyword: '',
       keywords: [],
-      showClose: false // 显示close图标
+      limit: 20,
+      page: 1,
+      type: 1,
+      showClose: false, // 显示close图标
+      firstSearch: 0 // 是否是第一次搜索，用来重新搜索清空搜索列表
     }
   },
   watch: {
@@ -35,6 +39,7 @@ export default {
       this.$router.go(-1)
     },
     searchKeywords () { // 搜索
+      // 保留五个最新的搜索记录
       if (localStorage.getItem('keywords')) {
         this.keywords = JSON.parse(localStorage.getItem('keywords'))
         this.keywords = Object.assign([], JSON.parse(localStorage.getItem('keywords')), [])
@@ -52,7 +57,21 @@ export default {
         this.keywords = Object.assign([], JSON.parse(localStorage.getItem('keywords')), [this.keyword])
         localStorage.setItem('keywords', JSON.stringify([this.keyword]))
       }
-      this.keyword = ''
+      if (this.keyword !== '') { // 发送异步请求
+        const {keyword, limit, type} = this
+        this.firstSearch = this.firstSearch + 1
+        const result = this.$store.dispatch('getSearchList', {keyword, limit, offset: 0, type})
+        const that = this
+        result.then(val => {
+          if (val.code === 200) {
+            that.$store.dispatch('getSearchSongs', val.result.songs)
+            if (this.firstSearch > 1) {
+              this.$store.dispatch('getCleanSongs', true)
+            }
+            that.$emit('showDetail', true)
+          }
+        })
+      }
     }
   }
 }
@@ -68,7 +87,6 @@ input[type="search"]::-webkit-search-cancel-button
   height: 3rem
   background: $ThemeColor
   display: flex
-  position: relative
   .top-left
     width: 10%
     height: 3rem

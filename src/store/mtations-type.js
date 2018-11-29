@@ -11,3 +11,6 @@ export const RECEIVE_HOT_SEARCH = 'receive_hot_search' // 获得热门搜索
 export const RECEIVE_HOT_SINGER = 'receive_hot_singer' // 获得热门歌手
 export const RECEIVE_SINGER_LIST = 'receive_singer_list' // 获得歌手分类
 export const RECEIVE_USER_SONG_LIST = 'receive_user_song_list' // 获得歌手分类
+export const RECEIVE_SEARCH_LIST = 'receive_search_list' // 搜索获得列表
+export const RECEIVE_SEARCH_SONGS = 'receive_search_songs' // 获取搜索单曲
+export const RECEIVE_CLEAN_SONG = 'receive_clean_song' // 获取是否清空搜索单曲记录

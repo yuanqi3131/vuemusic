@@ -1,6 +1,6 @@
 <template>
     <div class="official" ref="official">
-      <div class="official-content">
+      <div class="official-content" v-if="rank">
         <div class="official-title">官方榜</div>
         <div class="official-items" style="padding-bottom: 123%">
           <router-link :to="{name: 'MusicMenuDetail', params: {id: item.id}}" tag="div" class="official-item" v-for="(item, index) in officialRank" :key="item.id">

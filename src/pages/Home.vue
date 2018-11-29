@@ -50,7 +50,6 @@ export default {
       this.active = val
     },
     async getUserSongList () { // 异步获取用户歌单
-      debugger
       const result = await resUserSongList(this.userInfo.profile.userId)
       if (result.code === 200) {
         this.$store.dispatch('getUserSongList', result.playlist)
@@ -59,7 +58,8 @@ export default {
   },
   watch: {
     userInfo (val) {
-      if (val.code !== undefined && val.code === 200) {
+      console.log(val)
+      if (val !== null && val.code !== undefined && val.code === 200) {
         this.getUserSongList()
       }
     }

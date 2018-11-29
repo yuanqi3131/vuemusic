@@ -11,7 +11,10 @@ import {
   RECEIVE_HOT_SEARCH,
   RECEIVE_HOT_SINGER,
   RECEIVE_SINGER_LIST,
-  RECEIVE_USER_SONG_LIST
+  RECEIVE_USER_SONG_LIST,
+  RECEIVE_SEARCH_LIST,
+  RECEIVE_SEARCH_SONGS,
+  RECEIVE_CLEAN_SONG
 } from './mtations-type'
 
 export default {
@@ -54,5 +57,14 @@ export default {
   },
   [RECEIVE_USER_SONG_LIST] (state, {userSongList}) {
     state.userSongList = userSongList
+  },
+  [RECEIVE_SEARCH_LIST] (state, {searchList}) {
+    state.searchList = searchList
+  },
+  [RECEIVE_SEARCH_SONGS] (state, songs) {
+    state.searchList.songs = songs
+  },
+  [RECEIVE_CLEAN_SONG] (state, cleanSongList) {
+    state.cleanSongList = cleanSongList
   }
 }
