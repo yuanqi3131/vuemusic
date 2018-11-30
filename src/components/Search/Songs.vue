@@ -8,7 +8,7 @@
       </div>
       <div class="item-right"></div>
     </div>
-    <div class="loading" v-show="showLoading">
+    <div class="loading">
       <mt-spinner type="fading-circle"></mt-spinner>
       正在加载中...
     </div>
@@ -38,18 +38,19 @@ export default {
   },
   methods: {
     handlerScroll () {
-      this.scroll = new BScroll(this.$refs.SearchSong, {
-        click: true,
-        pullUpLoad: true
-      })
-      this.scroll.on('pullingUp', () => { // 绑定上拉事件
-        const {limit, page} = this
-        this.keyword = JSON.parse(localStorage.getItem('keywords'))[0]
-        this.showLoading = true
-        this.scroll.refresh()
-        const offset = page * limit
-        this.pullGetSong(this.keyword, this.limit, offset, this.type)
-      })
+      // this.scroll = new BScroll(this.$refs.SearchSong, {
+      //   click: true,
+      //   pullUpLoad: true
+      // })
+      // this.scroll.on('pullingUp', () => { // 绑定上拉事件
+      //   const {limit, page} = this
+      //   this.keyword = JSON.parse(localStorage.getItem('keywords'))[0]
+      //   this.showLoading = true
+      //   console.log(this.scroll)
+      //   this.scroll.refresh()
+      //   const offset = page * limit
+      //  // this.pullGetSong(this.keyword, this.limit, offset, this.type)
+      // })
     },
     async pullGetSong (keyword, limit, offset, type) { // 异步获取数据 分页
       try {
@@ -83,31 +84,29 @@ export default {
 
 <style lang="stylus" scoped>
 @import "~styles/mixin.styl"
-.items
-  positionAbsolute(0,0,0,0)
-  .item
-    width: 100%
-    height: 0
-    padding-bottom: 3.5rem
-    border-bottom: 1px solid rgba(0,0,0,.1)
-    line-height: 1.5rem
-    padding-left: .5rem
-    .item-left
-      width: 80%
-      .item-left-title
-        padding-top: .5rem
-        text-overflow: ellipsis
-        white-space: nowrap
-        overflow: hidden
-      .item-left-singer
-        font-size: .7rem
-        text-overflow: ellipsis
-        white-space: nowrap
-        overflow: hidden
-  .loading
-    margin: 0 auto
-    display: flex
-    align-items: center
-    justify-content: center
-    font-size: .8rem
+.item
+  width: 100%
+  height: 0
+  padding-bottom: 3.5rem
+  border-bottom: 1px solid rgba(0,0,0,.1)
+  line-height: 1.5rem
+  padding-left: .5rem
+  .item-left
+    width: 80%
+    .item-left-title
+      padding-top: .5rem
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
+    .item-left-singer
+      font-size: .7rem
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
+.loading
+  margin: 0 auto
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: .8rem
 </style>

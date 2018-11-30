@@ -1,7 +1,6 @@
 <template>
-  <div class="items" ref="SearchVideo">
-    <div>
-      <div class="item" v-for="(item, index) in videoList" :key="index">
+  <div class="items">
+    <div class="item" v-for="(item, index) in videoList" :key="index">
       <div class="item-left">
         <img class="item-left-img" :src="item.coverUrl"/>
         <div class="item-left-playCount">
@@ -14,12 +13,10 @@
         <div class="item-right-writer">by {{item.creator[0].userName}}</div>
       </div>
     </div>
-    </div>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
 export default {
   name: 'SearchVideo',
   data () {
@@ -32,7 +29,6 @@ export default {
   },
   mounted () {
     this.initData()
-    this.handlerScroll()
   },
   methods: {
     initData () {
@@ -46,13 +42,6 @@ export default {
           that.videoList = val.result.videos
         }
       })
-    },
-    handlerScroll () {
-      this.scroll = new BScroll(this.$refs.SearchVideo, {
-        click: true,
-        pullUpLoad: true
-      })
-      console.log(this.scroll)
     }
   },
   watch: {

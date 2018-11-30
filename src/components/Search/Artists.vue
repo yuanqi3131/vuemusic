@@ -46,12 +46,12 @@ export default {
   width: 100%
   height: 4rem
   .item-left
-    width:20%
+    width:18%
     height: 90%
     positionAbsolute(.3rem, null ,null, .3rem)
     border-radius: .4rem
   .item-content
-    positionAbsolute(null, null ,null, 24%)
+    positionAbsolute(null, null ,null, 22%)
     height: 4rem
     width: 100%
     border-bottom: 1px solid rgba(0,0,0,.1)

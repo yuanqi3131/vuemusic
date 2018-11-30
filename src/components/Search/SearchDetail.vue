@@ -1,57 +1,103 @@
 <template>
-  <div class="detail">
-      <mt-navbar v-model="navChoose" class="nav">
-        <mt-tab-item id="songs"><span :class="navChoose==='songs'?navText:''">单曲</span></mt-tab-item>
-        <mt-tab-item id="videos"><span :class="navChoose==='videos'?navText:''">视频</span></mt-tab-item>
-        <mt-tab-item id="artists"><span :class="navChoose==='artists'?navText:''">歌手</span></mt-tab-item>
-        <mt-tab-item id="albums"><span :class="navChoose==='albums'?navText:''">专辑</span></mt-tab-item>
-        <mt-tab-item id="playlists"><span :class="navChoose==='playlists'?navText:''">歌单</span></mt-tab-item>
-        <mt-tab-item id="djRadios"><span :class="navChoose==='djRadios'?navText:''">主播电台</span></mt-tab-item>
-        <mt-tab-item id="userprofiles"><span :class="navChoose==='userprofiles'?navText:''">用户</span></mt-tab-item>
-      </mt-navbar>
-      <mt-tab-container v-model="navChoose" class="container">
+  <div class="detail" ref="SearchDetail">
+    <div>
+      <mt-tab-container v-model="active" class="container">
         <mt-tab-container-item id="songs">
-          <Songs></Songs>
+          <component :is="SongVue"></component>
+          <!--<Songs></Songs>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="videos">
-          <Videos></Videos>
+          <component :is="VideoVue"></component>
+          <!--<Videos></Videos>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="artists">
-          <Artists></Artists>
+          <component :is="ArtistVue"></component>
+          <!--<Artists></Artists>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="albums">
-          <Albums></Albums>
+          <component :is="AlbumVue"></component>
+          <!--<Albums></Albums>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="playlists">
-          <Playlists></Playlists>
+          <component :is="PlaylistVue"></component>
+          <!--<Playlists></Playlists>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="djRadios">
-          <DjRadios></DjRadios>
+          <component :is="DjRadioVue"></component>
+          <!--<DjRadios></DjRadios>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="userprofiles">
-          <Userprofiles></Userprofiles>
+          <component :is="UserprofileVue"></component>
+          <!--<Userprofiles></Userprofiles>-->
         </mt-tab-container-item>
       </mt-tab-container>
     </div>
+  </div>
 </template>
 
 <script>
+import BScroll from 'better-scroll'
+// 异步引入组件
+const songs = resolve => require(['./Songs'], resolve)
+const videos = resolve => require(['./Videos'], resolve)
+const artists = resolve => require(['./Artists'], resolve)
+const albums = resolve => require(['./Albums'], resolve)
+const playlists = resolve => require(['./Playlists'], resolve)
+const djRadios = resolve => require(['./DjRadios'], resolve)
+const userprofiles = resolve => require(['./Userprofiles'], resolve)
+
 export default {
   name: 'SearchDetail',
+  props: {
+    active: String
+  },
   data () {
     return {
-      navChoose: 'songs',
-      navText: 'navText'
+      navText: 'navText',
+      SongVue: songs,
+      VideoVue: null,
+      ArtistVue: null,
+      AlbumVue: null,
+      PlaylistVue: null,
+      DjRadioVue: null,
+      UserprofileVue: null
+    }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.SearchDetail, {
+      click: true
+    })
+  },
+  watch: {
+    active () {
+      if (this.active === 'videos') {
+        this.VideoVue = videos
+      }
+      if (this.active === 'artists') {
+        this.ArtistVue = artists
+      }
+      if (this.active === 'albums') {
+        this.AlbumVue = albums
+      }
+      if (this.active === 'playlists') {
+        this.PlaylistVue = playlists
+      }
+      if (this.active === 'djRadios') {
+        this.DjRadioVue = djRadios
+      }
+      if (this.active === 'userprofiles') {
+        this.UserprofileVue = userprofiles
+      }
     }
   },
   components: {
-    Songs: resolve => { require(['./Songs'], resolve) },
-    Videos: resolve => { require(['./Videos'], resolve) },
-    Artists: resolve => { require(['./Artists'], resolve) },
-    Albums: resolve => { require(['./Albums'], resolve) },
-    Playlists: resolve => { require(['./Playlists'], resolve) },
-    DjRadios: resolve => { require(['./DjRadios'], resolve) },
-    Userprofiles: resolve => { require(['./Userprofiles'], resolve) }
+    // Songs: resolve => require(['./Songs'], resolve),
+    // Videos: resolve => require(['./Videos'], resolve),
+    // Artists: resolve => require(['./Artists'], resolve),
+    // Albums: resolve => require(['./Albums'], resolve),
+    // Playlists: resolve => require(['./Playlists'], resolve),
+    // DjRadios: resolve => require(['./DjRadios'], resolve),
+    // Userprofiles: resolve => require(['./Userprofiles'], resolve)
   }
 }
 </script>
@@ -80,10 +126,11 @@ export default {
  display: inline-flex
  align-items: center
  justify-content: center
+.detail
+  positionAbsolute(5.5rem,0,0,0)
+  overflow: hidden
 .navText
   border-bottom: 3px solid
   line-height: 1.4rem
   color: #fff
-.container
- height: 84vh
 </style>
