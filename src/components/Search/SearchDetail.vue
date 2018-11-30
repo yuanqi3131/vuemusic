@@ -1,43 +1,33 @@
 <template>
   <div class="detail" ref="SearchDetail">
-    <div>
-      <mt-tab-container v-model="active" class="container">
+    <mt-tab-container v-model="active" class="container">
         <mt-tab-container-item id="songs">
           <component :is="SongVue"></component>
-          <!--<Songs></Songs>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="videos">
           <component :is="VideoVue"></component>
-          <!--<Videos></Videos>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="artists">
           <component :is="ArtistVue"></component>
-          <!--<Artists></Artists>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="albums">
           <component :is="AlbumVue"></component>
-          <!--<Albums></Albums>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="playlists">
           <component :is="PlaylistVue"></component>
-          <!--<Playlists></Playlists>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="djRadios">
           <component :is="DjRadioVue"></component>
-          <!--<DjRadios></DjRadios>-->
         </mt-tab-container-item>
         <mt-tab-container-item id="userprofiles">
           <component :is="UserprofileVue"></component>
-          <!--<Userprofiles></Userprofiles>-->
         </mt-tab-container-item>
       </mt-tab-container>
-    </div>
   </div>
 </template>
 
 <script>
-import BScroll from 'better-scroll'
-// 异步引入组件
+// 异步引入组件 组件懒加载
 const songs = resolve => require(['./Songs'], resolve)
 const videos = resolve => require(['./Videos'], resolve)
 const artists = resolve => require(['./Artists'], resolve)
@@ -53,8 +43,8 @@ export default {
   },
   data () {
     return {
-      navText: 'navText',
-      SongVue: songs,
+      navText: 'navText', // 导航条的下划线样式 绑定class
+      SongVue: null, // 以下为定义空组件，懒加载
       VideoVue: null,
       ArtistVue: null,
       AlbumVue: null,
@@ -64,9 +54,11 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.SearchDetail, {
-      click: true
-    })
+    this.SongVue = songs
+    // this.scroll = new BScroll(this.$refs.SearchDetail, {
+    //   click: true,
+    //   pullUpLoad: true
+    // })
   },
   watch: {
     active () {
@@ -89,15 +81,6 @@ export default {
         this.UserprofileVue = userprofiles
       }
     }
-  },
-  components: {
-    // Songs: resolve => require(['./Songs'], resolve),
-    // Videos: resolve => require(['./Videos'], resolve),
-    // Artists: resolve => require(['./Artists'], resolve),
-    // Albums: resolve => require(['./Albums'], resolve),
-    // Playlists: resolve => require(['./Playlists'], resolve),
-    // DjRadios: resolve => require(['./DjRadios'], resolve),
-    // Userprofiles: resolve => require(['./Userprofiles'], resolve)
   }
 }
 </script>
@@ -126,11 +109,10 @@ export default {
  display: inline-flex
  align-items: center
  justify-content: center
-.detail
-  positionAbsolute(5.5rem,0,0,0)
-  overflow: hidden
 .navText
   border-bottom: 3px solid
   line-height: 1.4rem
   color: #fff
+.container
+  position: static
 </style>
