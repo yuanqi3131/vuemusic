@@ -47,10 +47,10 @@ export default {
   height: 4rem
   line-height: 5rem
   text-align: center
-  position: fixed
   width: 100%
-  z-index: 98
   overflow: hidden
+  position: fixed
+  z-index: 999
   .header-left
     flex: 0.4
   .header-middle

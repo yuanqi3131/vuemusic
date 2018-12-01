@@ -17,6 +17,7 @@
     <mt-tab-container-item id="play">
     </mt-tab-container-item>
   </mt-tab-container>
+  <Footer></Footer>
 </div>
 </template>
 
@@ -26,6 +27,7 @@ import Nav from '../components/Home/Nav'
 import LeftMenu from '../components/Home/LeftMenu'
 import Myself from '../components/Home/Myself/Myself'
 import {resUserSongList} from '../api'
+import Footer from '../components/Home/Footer'
 export default {
   name: 'Home', // 推荐首页
   data () {
@@ -68,7 +70,8 @@ export default {
     Header,
     Nav,
     LeftMenu,
-    Myself
+    Myself,
+    Footer
   }
 }
 </script>

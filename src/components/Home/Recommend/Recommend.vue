@@ -6,7 +6,7 @@
     <Template title="推荐歌单" :list="recommendList" router="/musicmenu"></Template>
     <Template title="最新音乐" :list="recommendList" router="/musicmenu"></Template>
     <Radio title="主播电台" :list="anchorRadios"></Radio>
-    <Footer></Footer>
+    <div style="height: 2rem"></div>
   </div>
 </div>
 </template>
@@ -16,7 +16,6 @@ import {mapState} from 'vuex'
 import Banner from './Banner'
 import IconNav from './IconNav'
 import Template from './Template'
-import Footer from '../Footer'
 import Radio from './Radio'
 import BScroll from 'better-scroll'
 export default {
@@ -24,20 +23,9 @@ export default {
   mounted () {
     this.$store.dispatch('getRecommendList')
     this.$store.dispatch('getAnchorRadios')
-  },
-  watch: {
-    getRecommendList () {
-      // this.scroll = new BScroll(this.$refs.recommend, {
-      //   scrollY: true,
-      //   click: true,
-      //   pullDownRefresh: {
-      //     threshold: 40
-      //   } // 下拉刷新
-      // })
-      // this.scroll.on('scroll', (pos) => {
-      //   alert(pos.y)
-      // })
-    }
+    this.scroll = new BScroll(this.$refs.recommend, {
+      click: true
+    })
   },
   computed: {
     ...mapState(['recommendList', 'anchorRadios'])
@@ -46,11 +34,14 @@ export default {
     Banner,
     IconNav,
     Template,
-    Footer,
     Radio
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+@import "~styles/mixin.styl"
+.recommend
+  positionAbsolute(0,0,0,0)
+  overflow: hidden
 </style>

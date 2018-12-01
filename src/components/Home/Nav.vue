@@ -1,12 +1,12 @@
 <template>
-<div>
+<div class="homeNav">
   <mt-navbar class="nav" v-model="navChoose">
     <mt-tab-item id="recommend"><span :class="navChoose==='recommend'?navText:''">推荐</span></mt-tab-item>
     <mt-tab-item id="friend"><span :class="navChoose==='friend'?navText:''">朋友</span></mt-tab-item>
     <mt-tab-item id="radio"><span :class="navChoose==='radio'?navText:''">电台</span></mt-tab-item>
   </mt-navbar>
   <mt-tab-container v-model="navChoose">
-    <mt-tab-container-item id="recommend">
+    <mt-tab-container-item id="recommend" >
       <Recommend></Recommend>
     </mt-tab-container-item>
     <mt-tab-container-item id="friend">
@@ -51,10 +51,13 @@ export default {
     margin-bottom: 0
   .mint-navbar
     height: 2.5rem
+  >>> .mint-tab-container
+    position: static
 .nav
-  positionFixed(4rem,null,null,0)
   width: 100%
-  z-index: 98
+  position: fixed
+  z-index: 999
+  top: 4rem
 .mint-tab-item
   background: $ThemeColor
   color: $NavTextColor
