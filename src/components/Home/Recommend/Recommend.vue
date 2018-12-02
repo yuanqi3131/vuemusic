@@ -6,7 +6,6 @@
     <Template title="推荐歌单" :list="recommendList" router="/musicmenu"></Template>
     <Template title="最新音乐" :list="recommendList" router="/musicmenu"></Template>
     <Radio title="主播电台" :list="anchorRadios"></Radio>
-    <div style="height: 2rem"></div>
   </div>
 </div>
 </template>
@@ -23,9 +22,15 @@ export default {
   mounted () {
     this.$store.dispatch('getRecommendList')
     this.$store.dispatch('getAnchorRadios')
-    this.scroll = new BScroll(this.$refs.recommend, {
-      click: true
-    })
+    this.createScroll()
+  },
+  methods: {
+    createScroll () {
+      this.scroll = new BScroll(this.$refs.recommend, {
+        click: true
+      })
+      console.log(this.scroll)
+    }
   },
   computed: {
     ...mapState(['recommendList', 'anchorRadios'])

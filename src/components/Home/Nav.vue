@@ -56,7 +56,7 @@ export default {
 .nav
   width: 100%
   position: fixed
-  z-index: 999
+  z-index: 998
   top: 4rem
 .mint-tab-item
   background: $ThemeColor

@@ -9,33 +9,37 @@
   <Header v-on:showMenu="showMenu" v-on:changePage="changePage"></Header>
   <mt-tab-container v-model="active">
     <mt-tab-container-item id="myself">
-      <Myself></Myself>
+      <component :is="myself"></component>
+      <!--<Myself></Myself>-->
     </mt-tab-container-item>
     <mt-tab-container-item id="index">
-      <Nav :class="showLeftMenu ? showMenuStatus : ''"></Nav>
+      <component :is="nav"></component>
+      <!--<Nav></Nav>-->
     </mt-tab-container-item>
     <mt-tab-container-item id="play">
     </mt-tab-container-item>
   </mt-tab-container>
-  <Footer></Footer>
 </div>
 </template>
 
 <script>
 import Header from '../components/Home/Header'
-import Nav from '../components/Home/Nav'
+// import Nav from '../components/Home/Nav'
 import LeftMenu from '../components/Home/LeftMenu'
-import Myself from '../components/Home/Myself/Myself'
+// import Myself from '../components/Home/Myself/Myself'
 import {resUserSongList} from '../api'
-import Footer from '../components/Home/Footer'
+
+const navVue = resolve => require(['../components/Home/Nav'], resolve)
+const myselfVue = resolve => require(['../components/Home/Myself/Myself'], resolve)
 export default {
   name: 'Home', // 推荐首页
   data () {
     return {
       showLeftMenu: false,
-      showMenuStatus: 'showMenuStatus',
       active: 'index', // 进入home页面默认菜单项
-      userInfo: {} // 用户信息
+      userInfo: {}, // 用户信息
+      nav: navVue,
+      myself: null
     }
   },
   mounted () {
@@ -49,6 +53,12 @@ export default {
       this.showLeftMenu = false
     },
     changePage (val) {
+      if (val === 'myself') {
+        this.myself = myselfVue
+      }
+      if (val === 'index') {
+        this.nav = navVue
+      }
       this.active = val
     },
     async getUserSongList () { // 异步获取用户歌单
@@ -60,7 +70,6 @@ export default {
   },
   watch: {
     userInfo (val) {
-      console.log(val)
       if (val !== null && val.code !== undefined && val.code === 200) {
         this.getUserSongList()
       }
@@ -68,10 +77,9 @@ export default {
   },
   components: {
     Header,
-    Nav,
-    LeftMenu,
-    Myself,
-    Footer
+    // Nav,
+    LeftMenu
+    // Myself
   }
 }
 </script>
@@ -99,11 +107,6 @@ export default {
   position: fixed
   height: 100%
   width: 100%
-  z-index: 99
+  z-index: 999
   background: rgba(0,0,0,.5)
-.showMenuStatus
-  position: fixed
-  right: 0
-  left: 0
-  overflow: hidden
 </style>

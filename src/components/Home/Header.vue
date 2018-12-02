@@ -50,7 +50,7 @@ export default {
   width: 100%
   overflow: hidden
   position: fixed
-  z-index: 999
+  z-index: 998
   .header-left
     flex: 0.4
   .header-middle

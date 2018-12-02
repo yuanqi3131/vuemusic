@@ -19,6 +19,11 @@ export default {
   name: 'UserSongList', // 用户歌单组件
   computed: {
     ...mapState(['userSongList'])
+  },
+  watch: {
+    userSongList () {
+      this.$emit('createScroll', true)
+    }
   }
 }
 </script>

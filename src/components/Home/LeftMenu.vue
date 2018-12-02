@@ -144,7 +144,7 @@ export default {
 @import "~styles/variable.styl"
 .menu
   position: fixed
-  z-index: 100
+  z-index: 1000
   width: 80%
   height: 100%
   background: $White

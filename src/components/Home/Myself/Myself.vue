@@ -1,5 +1,6 @@
 <template>
-  <div class="myself">
+<div class="myself" ref="Myself">
+  <div>
     <div class="myself-item">
       <i class="iconfont icon-yinyuered myself-item-icon"></i>
       <div class="myself-item-desc"><p>本地音乐</p></div>
@@ -37,14 +38,16 @@
         <i class="iconfont icon-shezhi"></i>
       </div>
       <div class="myself-list-content" v-if="showSongList">
-        <UserSongList></UserSongList>
+        <UserSongList v-on:createScroll="initScroll"></UserSongList>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 import UserSongList from './UserSongList'
+import BScroll from 'better-scroll'
 export default {
   name: 'Myself',
   data () {
@@ -52,6 +55,11 @@ export default {
       showSongList: true,
       rotate: '' // 箭头旋转样式
     }
+  },
+  mounted () {
+    this.scroll = new BScroll(this.$refs.Myself, {
+      click: true
+    })
   },
   methods: {
     showOrHidden () {
@@ -61,6 +69,14 @@ export default {
       } else {
         this.rotate = 'arrow'
       }
+    },
+    initScroll (val) {
+      // if (val) {
+      //   this.scroll = new BScroll(this.$refs.Myself, {
+      //     click: true
+      //   })
+      //   console.log(this.scroll)
+      // }
     }
   },
   components: {
@@ -71,8 +87,11 @@ export default {
 
 <style lang="stylus" scoped>
 @import "~styles/variable.styl"
+@import "~styles/mixin.styl"
 .myself
-  margin-top: 4rem
+  width: 100%
+  positionAbsolute(4rem,0,0,0)
+  overflow: hidden
   .myself-item
     display: flex
     height: 3rem
