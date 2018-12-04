@@ -14,3 +14,7 @@ export const RECEIVE_USER_SONG_LIST = 'receive_user_song_list' // 获得歌手�
 export const RECEIVE_SEARCH_LIST = 'receive_search_list' // 搜索获得列表
 export const RECEIVE_SEARCH_SONGS = 'receive_search_songs' // 获取搜索单曲
 export const RECEIVE_CLEAN_SONG = 'receive_clean_song' // 获取是否清空搜索单曲记录
+export const RECEIVE_RECOMMEND_DJ = 'receive_recommend_dj' // 获取推荐电台
+export const RECEIVE_PAY_GIFT = 'receive_pay_gift' // 获得付费精品电台
+export const RECEIVE_RADIO_CATEGORY = 'RECEIVE_RADIO_CATEGORY' // 获取电台分类
+export const RECEIVE_RADIO_CATEGORY_DETAIL = 'RECEIVE_RADIO_CATEGORY_DETAIL' // 获取电台分类详情

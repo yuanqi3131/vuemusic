@@ -53,8 +53,8 @@ export default {
   background: $ThemeColor
 .bannerBack
   background: $ThemeColor
-  height: 6rem
-  positionRelative(6.4rem)
+  height: 7rem
+  positionRelative(5.4rem)
 .swiper-container
   margin-top: 0rem
   .bannerImg

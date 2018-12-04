@@ -14,7 +14,10 @@ import {
   RECEIVE_USER_SONG_LIST,
   RECEIVE_SEARCH_LIST,
   RECEIVE_SEARCH_SONGS,
-  RECEIVE_CLEAN_SONG
+  RECEIVE_CLEAN_SONG,
+  RECEIVE_RECOMMEND_DJ,
+  RECEIVE_PAY_GIFT,
+  RECEIVE_RADIO_CATEGORY
 } from './mtations-type'
 
 export default {
@@ -66,5 +69,15 @@ export default {
   },
   [RECEIVE_CLEAN_SONG] (state, cleanSongList) {
     state.cleanSongList = cleanSongList
+  },
+  [RECEIVE_RECOMMEND_DJ] (state, recommendDj) {
+    state.recommendDJ = recommendDj
+  },
+  [RECEIVE_PAY_GIFT] (state, payRadio) {
+    state.payRadio = payRadio
+  },
+  [RECEIVE_RADIO_CATEGORY] (state, obj) {
+    state.radioCategory = obj.lradioCategory
+    state.radioCategoryDetail = obj.radioCategoryDetail
   }
 }

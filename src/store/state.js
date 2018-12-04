@@ -27,5 +27,9 @@ export default {
     djRadios: [], // 电台
     videos: [] // 视频
   }, // 搜索列表
-  cleanSongList: false // 搜索时清除单曲数组
+  cleanSongList: false, // 搜索时清除单曲数组
+  recommendDJ: [], // 推荐电台
+  payRadio: [], // 付费电台
+  radioCategory: [], // 电台分类
+  radioCategoryDetail: [] // 电台分类详情
 }

@@ -13,7 +13,10 @@ import {
   RECEIVE_USER_SONG_LIST,
   RECEIVE_SEARCH_LIST,
   RECEIVE_SEARCH_SONGS,
-  RECEIVE_CLEAN_SONG
+  RECEIVE_CLEAN_SONG,
+  RECEIVE_RECOMMEND_DJ,
+  RECEIVE_PAY_GIFT,
+  RECEIVE_RADIO_CATEGORY
 } from './mtations-type'
 import {
   resBanners,
@@ -26,7 +29,11 @@ import {
   resHotSearch,
   resHotSinger,
   resSingerList,
-  resSearchList
+  resSearchList,
+  resRecommendDj,
+  resPayGift,
+  resRadioCategory,
+  resRadioCategoryRecommend
 } from '../api'
 
 export default {
@@ -118,5 +125,35 @@ export default {
   },
   getCleanSongs ({commit}, cleanSongs) {
     commit(RECEIVE_CLEAN_SONG, cleanSongs)
+  },
+  async getRecommendDj ({commit}) {
+    const result = await resRecommendDj()
+    if (result.code === 200) {
+      const recommendDj = result.djRadios
+      commit(RECEIVE_RECOMMEND_DJ, recommendDj)
+    }
+  },
+  async getPayRadio ({commit}) {
+    const result = await resPayGift()
+    if (result.code === 200) {
+      const payRadio = result.data.list
+      commit(RECEIVE_PAY_GIFT, payRadio)
+    }
+  },
+  async getRadioRecommend ({commit}) {
+    const result = await resRadioCategory() // 获得分类ID
+    if (result.code === 200) {
+      const categories = result.categories
+      const list = [] // 存放分类信息
+      for (let i = 0; i < categories.length; i++) {
+        const categeryDetail = await resRadioCategoryRecommend(categories[i].id)
+        if (categeryDetail.code === 200) {
+          let temp = categeryDetail.djRadios
+          list.push(temp)
+        }
+      }
+      const obj = {lradioCategory: categories, radioCategoryDetail: list}
+      commit(RECEIVE_RADIO_CATEGORY, obj)
+    }
   }
 }
